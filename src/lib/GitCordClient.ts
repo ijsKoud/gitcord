@@ -13,6 +13,5 @@ export default class GitCordClient extends IgloClient {
 	/** Starts the Discord bot and it's processes */
 	public start() {
 		void this.run(process.env.DISCORD_BOT_TOKEN);
-		console.log(this.listenerCount("ready"));
 	}
 }
