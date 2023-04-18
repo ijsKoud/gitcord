@@ -1,4 +1,9 @@
 import { config } from "dotenv";
 config();
 
-import "./lib/env.js";
+import parse from "./lib/env.js";
+parse();
+
+import GitCordClient from "./lib/GitCordClient.js";
+const client = new GitCordClient();
+client.start();
