@@ -10,7 +10,7 @@ export default class GitCordClient extends IgloClient {
 		});
 	}
 
-	/** Starts the Discord bot and it's processes */
+	/** Starts the Discord bot and its processes */
 	public start() {
 		void this.run(process.env.DISCORD_BOT_TOKEN);
 	}
