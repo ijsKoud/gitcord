@@ -1,0 +1,41 @@
+{
+	"name": "template",
+	"version": "1.0.0",
+	"description": "A quick and easy to use template for TypeScript like projects ✏️",
+	"author": "ijsKoud <github@ijskoud.dev>",
+	"license": "MIT",
+	"type": "module",
+	"main": "dist/index.js",
+	"homepage": "https://github.com/ijsKoud/project-template",
+	"scripts": {
+		"build": "tsc --build",
+		"build:watch": "tsc --watch",
+		"start:dev": "nodemon ./dist",
+		"start": "node ./dist",
+		"lint": "eslint src",
+		"postinstall": "is-ci || husky install"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.6.1",
+		"@commitlint/config-angular": "^17.6.1",
+		"@sapphire/eslint-config": "^4.4.1",
+		"@sapphire/prettier-config": "^1.4.5",
+		"@sapphire/ts-config": "^3.3.4",
+		"@types/node": "^18.15.11",
+		"@typescript-eslint/eslint-plugin": "^5.58.0",
+		"@typescript-eslint/parser": "^5.58.0",
+		"eslint": "^8.38.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"husky": "^8.0.3",
+		"is-ci": "^3.0.1",
+		"lint-staged": "^13.2.1",
+		"nodemon": "^2.0.22",
+		"prettier": "^2.8.7",
+		"typescript": "4.9.5"
+	},
+	"engines": {
+		"node": ">= v18.16.0"
+	},
+	"packageManager": "yarn@3.5.0"
+}
