@@ -1,1 +1,4 @@
-console.log("Hello World!");
+import { config } from "dotenv";
+config();
+
+import "./lib/env.js";
