@@ -39,6 +39,8 @@
 	},
 	"packageManager": "yarn@3.5.0",
 	"dependencies": {
+		"@octokit/webhooks": "^11.0.0",
+		"@octokit/webhooks-types": "^6.11.0",
 		"@snowcrystals/icicle": "^1.0.3",
 		"@snowcrystals/iglo": "^1.2.1",
 		"colorette": "2.0.19",
