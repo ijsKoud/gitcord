@@ -71,7 +71,7 @@ export default class GitHubWebhookManager {
 		const webhook = new WebhookClient({
 			url: process.env.DEV_WEBHOOK_URL
 		});
-		if (embed) await webhook.send({ embeds: [embed], threadId: "1098585806681153608" });
+		if (embed) await webhook.send({ embeds: [embed] });
 	}
 
 	/** Verifies if the received event is valid and coming from GitHub */
