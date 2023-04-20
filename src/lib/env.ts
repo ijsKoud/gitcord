@@ -8,7 +8,8 @@ const envSchema = z.object({
 	DISCORD_BOT_TOKEN: z.string().nonempty(),
 	DEV_SMEE_URL: z.string().nonempty().url(),
 	DEV_WEBHOOK_URL: z.string().nonempty().url(),
-	GITHUB_WEBHOOK_SECRET: z.string()
+	GITHUB_WEBHOOK_SECRET: z.string(),
+	PORT: z.string().max(4)
 });
 
 /** Parses process.env to check if all required environment variables are present and valid */
