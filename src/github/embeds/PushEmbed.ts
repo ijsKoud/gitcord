@@ -17,6 +17,7 @@ export default class extends GitHubEmbed {
 
 		embed.setDescription(commits.join("\n").slice(0, 4096));
 		embed.addFields({ name: `On ${type}`, value: `[${id}](${refUrl})`.slice(0, 1024) });
+		embed.setTitle(embed.data.title!.replace(`{commit_count}`, commits.length.toString()));
 
 		return embed;
 	}
