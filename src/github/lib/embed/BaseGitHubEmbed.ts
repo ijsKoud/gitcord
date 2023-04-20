@@ -1,6 +1,6 @@
 import type { WebhookEventName } from "@octokit/webhooks-types";
 import { EmbedBuilder } from "discord.js";
-import { ActionTypes, EMBED_COLORS } from "./types.js";
+import { ActionTypes, EMBED_COLORS } from "../types.js";
 
 export interface GitHubEventSender {
 	/** The username of the sender (e.g.: ijsKoud) */

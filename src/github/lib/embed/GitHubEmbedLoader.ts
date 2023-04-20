@@ -1,6 +1,6 @@
 import { Collection } from "discord.js";
-import type GitCordClient from "../../lib/GitCordClient.js";
-import type { GitHubEmbed } from "../structures/GitHubEmbed.js";
+import type GitCordClient from "../../../lib/GitCordClient.js";
+import type { GitHubEmbed } from "./structures/GitHubEmbed.js";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readdir } from "node:fs/promises";
@@ -11,7 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default class GitHubEmbedLoader {
 	public events = new Collection<string, GitHubEmbed>();
-	public directory = join(__dirname, "..", "embeds");
+	public directory = join(__dirname, "..", "..", "embeds");
 
 	public constructor(public client: GitCordClient) {}
 
@@ -46,7 +46,7 @@ export default class GitHubEmbedLoader {
 	 */
 	private async loadFiles(filePaths: string[]) {
 		let count = 0;
-		for await (const filePath of filePaths) {
+		for await (const filePath of filePaths.filter((filepath) => filepath.endsWith(".js"))) {
 			try {
 				const { default: GitHubEmbedConstructor } = (await import(filePath)) as { default: new () => GitHubEmbed };
 				const Embed = new GitHubEmbedConstructor();
@@ -55,6 +55,7 @@ export default class GitHubEmbedLoader {
 				count++;
 			} catch (err) {
 				this.client.logger.error(`[GitHubEmbedLoader]: Failed to load file with path ${underline(filePath)}`);
+				this.client.logger.error(err);
 			}
 		}
 

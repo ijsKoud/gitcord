@@ -1,8 +1,8 @@
 import type { User, WebhookEvent, WebhookEventName } from "@octokit/webhooks-types";
 import { Logger } from "@snowcrystals/icicle";
 import type { EmbedBuilder } from "discord.js";
-import getBaseGitHubEmbed, { type GitHubEventSender, type GitHubEventType } from "../lib/BaseGitHubEmbed.js";
-import { BLOCKED_EVENTS, UserTypes, type WebhookEvents } from "../lib/types.js";
+import getBaseGitHubEmbed, { type GitHubEventSender, type GitHubEventType } from "../BaseGitHubEmbed.js";
+import { BLOCKED_EVENTS, UserTypes, type WebhookEvents } from "../../types.js";
 
 export class GitHubEmbed implements GitHubEmbedOptions {
 	public name: WebhookEventName;
