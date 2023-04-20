@@ -1,4 +1,4 @@
-import type GitCordClient from "../../../lib/GitCordClient.js";
+import type GitCordClient from "../../../discord/lib/GitCordClient.js";
 import { Webhooks } from "@octokit/webhooks";
 import EventSource from "eventsource";
 import type GitHubManager from "../GitHubManager.js";

@@ -1,4 +1,4 @@
-import type GitCordClient from "../../lib/GitCordClient.js";
+import type GitCordClient from "../../discord/lib/GitCordClient.js";
 import GitHubEmbedLoader from "./embed/GitHubEmbedLoader.js";
 import GitHubWebhookManager from "./webhook/GitHubWebhookManager.js";
 

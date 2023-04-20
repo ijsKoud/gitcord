@@ -1,5 +1,5 @@
 import { Collection, EmbedBuilder } from "discord.js";
-import type GitCordClient from "../../../lib/GitCordClient.js";
+import type GitCordClient from "../../../discord/lib/GitCordClient.js";
 import type { GitHubEmbed } from "./structures/GitHubEmbed.js";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";

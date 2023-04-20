@@ -1,6 +1,6 @@
 import { IgloClient } from "@snowcrystals/iglo";
-import { BOT_COMMANDS_DIR, BOT_INTERACTIONS_DIR, BOT_LISTENER_DIR } from "./constants.js";
-import GitHubManager from "../github/lib/GitHubManager.js";
+import { BOT_COMMANDS_DIR, BOT_INTERACTIONS_DIR, BOT_LISTENER_DIR } from "../../lib/constants.js";
+import GitHubManager from "../../github/lib/GitHubManager.js";
 
 export default class GitCordClient extends IgloClient {
 	public githubManager = new GitHubManager(this);
