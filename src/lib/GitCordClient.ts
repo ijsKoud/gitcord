@@ -1,9 +1,9 @@
 import { IgloClient } from "@snowcrystals/iglo";
 import { BOT_COMMANDS_DIR, BOT_INTERACTIONS_DIR, BOT_LISTENER_DIR } from "./constants.js";
-import GitHubEmbedLoader from "../github/lib/GitHubEmbedLoader.js";
+import GitHubManager from "../github/lib/GitHubManager.js";
 
 export default class GitCordClient extends IgloClient {
-	public gitHubEmbedLoader = new GitHubEmbedLoader(this);
+	public githubManager = new GitHubManager(this);
 
 	public constructor() {
 		super({
@@ -15,6 +15,6 @@ export default class GitCordClient extends IgloClient {
 	/** Starts the Discord bot and its processes */
 	public start() {
 		void this.run(process.env.DISCORD_BOT_TOKEN);
-		void this.gitHubEmbedLoader.init();
+		void this.githubManager.init();
 	}
 }
