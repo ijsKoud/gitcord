@@ -7,7 +7,7 @@ export default class GitHubManager {
 	public embedLoader: GitHubEmbedLoader;
 
 	public constructor(public client: GitCordClient) {
-		this.webhookManager = new GitHubWebhookManager(client);
+		this.webhookManager = new GitHubWebhookManager(client, this);
 		this.embedLoader = new GitHubEmbedLoader(client);
 	}
 

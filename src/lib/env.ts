@@ -7,6 +7,7 @@ const logger = new Logger();
 const envSchema = z.object({
 	DISCORD_BOT_TOKEN: z.string().nonempty(),
 	DEV_SMEE_URL: z.string().nonempty().url(),
+	DEV_WEBHOOK_URL: z.string().nonempty().url(),
 	GITHUB_WEBHOOK_SECRET: z.string()
 });
 

@@ -25,7 +25,7 @@ export class GitHubEmbed implements GitHubEmbedOptions {
 
 	public _run(event: WebhookEvents) {
 		// Block events which aren't applicable for webhooks
-		if (BLOCKED_EVENTS.includes(this.name)) return;
+		if (BLOCKED_EVENTS.includes(this.name)) return null;
 
 		let author: GitHubEventSender | undefined = undefined;
 		let repository = "";

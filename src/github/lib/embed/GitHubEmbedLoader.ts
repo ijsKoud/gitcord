@@ -1,4 +1,4 @@
-import { Collection } from "discord.js";
+import { Collection, EmbedBuilder } from "discord.js";
 import type GitCordClient from "../../../lib/GitCordClient.js";
 import type { GitHubEmbed } from "./structures/GitHubEmbed.js";
 import { dirname, join } from "node:path";
@@ -20,6 +20,20 @@ export default class GitHubEmbedLoader {
 		const files = await this.getFiles(this.directory);
 		const count = await this.loadFiles(files);
 		this.client.logger.debug(`[GitHubEmbedLoader]: ${count} files loaded`);
+	}
+
+	/**
+	 * Runs the embed creator for the provided event if one is found
+	 * @param payload The event payload
+	 * @param name The name of the event
+	 * @returns EmbedBuilder | null depending on the availability of the handlers
+	 */
+	public async onEvent(payload: string, name: string): Promise<EmbedBuilder | null> {
+		const eventHandler = this.events.get(name);
+		if (!eventHandler) return null;
+
+		const embed = await eventHandler._run(JSON.parse(payload));
+		return embed;
 	}
 
 	/**
