@@ -7,6 +7,12 @@
 	"type": "module",
 	"main": "dist/index.js",
 	"homepage": "https://github.com/ijsKoud/project-template",
+	"imports": {
+		"#discord/*": "./dist/discord/*",
+		"#github/*": "./dist/github/*",
+		"#database/*": "./dist/database/*",
+		"#shared/*": "./dist/lib/*"
+	},
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch",
@@ -34,6 +40,7 @@
 		"lint-staged": "^13.2.1",
 		"nodemon": "^2.0.22",
 		"prettier": "^2.8.8",
+		"prisma": "^4.13.0",
 		"typescript": "5.0.4"
 	},
 	"engines": {
@@ -43,6 +50,8 @@
 	"dependencies": {
 		"@octokit/webhooks": "^11.0.0",
 		"@octokit/webhooks-types": "^6.11.0",
+		"@prisma/client": "^4.13.0",
+		"@sapphire/discord-utilities": "^3.0.2",
 		"@snowcrystals/icicle": "^1.0.4",
 		"@snowcrystals/iglo": "^1.2.2",
 		"colorette": "2.0.20",

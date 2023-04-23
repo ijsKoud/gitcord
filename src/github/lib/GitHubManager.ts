@@ -11,6 +11,7 @@ export default class GitHubManager {
 		this.embedLoader = new GitHubEmbedLoader(client);
 	}
 
+	/** Initialize the GitHub event manager */
 	public async init() {
 		this.webhookManager.init();
 		await this.embedLoader.init();

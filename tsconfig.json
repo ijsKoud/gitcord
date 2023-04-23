@@ -2,10 +2,17 @@
 	"extends": "@sapphire/ts-config/extra-strict",
 	"compilerOptions": {
 		"outDir": "./dist",
+		"baseUrl": "./src",
 		"noUnusedParameters": false,
 		"useUnknownInCatchVariables": false,
 		"module": "ESNext",
-		"moduleResolution": "NodeNext"
+		"moduleResolution": "NodeNext",
+		"paths": {
+			"#discord/*": ["discord/*"],
+			"#github/*": ["github/*"],
+			"#database/*": ["database/*"],
+			"#shared/*": ["lib/*"]
+		}
 	},
 	"exclude": ["node_modules"],
 	"include": ["./src/**/*"]

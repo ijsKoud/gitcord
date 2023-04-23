@@ -1,9 +1,14 @@
 import { IgloClient } from "@snowcrystals/iglo";
-import { BOT_COMMANDS_DIR, BOT_INTERACTIONS_DIR, BOT_LISTENER_DIR } from "../../lib/constants.js";
-import GitHubManager from "../../github/lib/GitHubManager.js";
+import { BOT_COMMANDS_DIR, BOT_INTERACTIONS_DIR, BOT_LISTENER_DIR } from "#shared/constants.js";
+import GitHubManager from "#github/lib/GitHubManager.js";
+import { PrismaClient } from "@prisma/client";
+import DatabaseManager from "#database/DatabaseManager.js";
 
 export default class GitCordClient extends IgloClient {
 	public githubManager = new GitHubManager(this);
+	public databaseManager = new DatabaseManager(this);
+
+	public prisma = new PrismaClient();
 
 	public constructor() {
 		super({
@@ -16,5 +21,7 @@ export default class GitCordClient extends IgloClient {
 	public start() {
 		void this.run(process.env.DISCORD_BOT_TOKEN);
 		void this.githubManager.init();
+
+		void this.prisma.$connect().then(() => this.logger.info(`[PRISMA]: Connected to postgresql database.`));
 	}
 }
