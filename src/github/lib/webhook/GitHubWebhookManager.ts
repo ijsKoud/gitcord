@@ -31,7 +31,7 @@ export default class GitHubWebhookManager {
 
 	private initProd() {
 		const server = express();
-		server.post(`/webhook/:guildId`, async (req, res) => {
+		server.post(`/webhook/:guildId/:webhookId`, async (req, res) => {
 			try {
 				await this.handleRequest(req, res);
 			} catch (err) {

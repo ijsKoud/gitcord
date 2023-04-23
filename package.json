@@ -7,6 +7,12 @@
 	"type": "module",
 	"main": "dist/index.js",
 	"homepage": "https://github.com/ijsKoud/project-template",
+	"imports": {
+		"#discord/*": "./dist/discord/*",
+		"#github/*": "./dist/github/*",
+		"#database/*": "./dist/database/*",
+		"#shared/*": "./dist/lib/*"
+	},
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch",

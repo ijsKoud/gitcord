@@ -7,6 +7,7 @@ export default class DatabaseManager {
 
 	public constructor(public client: GitCordClient) {}
 
+	/** Initialize the database manager */
 	public async init() {
 		const guilds = this.client.guilds.cache;
 		const guildConfigs = await this.client.prisma.guild.findMany({ include: { guildWebhooks: true } });
@@ -14,14 +15,17 @@ export default class DatabaseManager {
 		const missingConfigs = guilds.filter((guild) => !guildConfigs.find((config) => config.guildId === guild.id));
 		const missingGuilds = guildConfigs.filter((config) => !guilds.get(config.guildId));
 
+		// Delete configs of left guilds
 		await this.client.prisma.guildWebhook.deleteMany({ where: { guildId: { in: missingGuilds.map((config) => config.guildId) } } });
 		await this.client.prisma.guild.deleteMany({ where: { guildId: { in: missingGuilds.map((config) => config.guildId) } } });
 
+		// Create missing configs for joined guilds
 		for await (const missingConfig of [...missingConfigs.values()]) {
 			const config = await this.client.prisma.guild.create({ data: { guildId: missingConfig.id }, include: { guildWebhooks: true } });
 			guildConfigs.push(config);
 		}
 
+		// Load the guild configs
 		for (const config of guildConfigs) {
 			const guildConfig = new GitCordGuild(this.client);
 			if (!guildConfig.init(config)) continue;

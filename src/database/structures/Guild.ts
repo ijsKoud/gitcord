@@ -11,6 +11,7 @@ export default class GitCordGuild {
 
 	public constructor(public client: GitCordClient) {}
 
+	/** Initialize the guild config */
 	public init(config: GuildConfig): boolean {
 		if (!this.client.isReady()) throw new Error(`GitCordGuild: Initialized while client is still in loading state.`);
 

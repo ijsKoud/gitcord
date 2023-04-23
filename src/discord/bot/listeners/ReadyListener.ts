@@ -1,3 +1,4 @@
+import type GitCordClient from "#discord/lib/GitCordClient.js";
 import { ApplyOptions, EventListener, type EventListenerOptions } from "@snowcrystals/iglo";
 import { bold } from "colorette";
 import { ActivityType } from "discord.js";
@@ -8,7 +9,7 @@ export default class extends EventListener {
 		const username = bold(this.client.user!.tag);
 		this.client.logger.info(`${username} is up and running!`);
 
-		void this.client.databaseManager.init();
+		void (this.client as GitCordClient).databaseManager.init();
 		this.client.user!.setPresence({ activities: [{ name: "GitHub webhooks", type: ActivityType.Listening }] });
 	}
 }

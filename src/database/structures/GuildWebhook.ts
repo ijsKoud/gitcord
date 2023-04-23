@@ -25,6 +25,7 @@ export default class GitCordGuildWebhook {
 		this.parseRepositories(webhook.repositories);
 	}
 
+	/** Returns the webhook web path */
 	public toString() {
 		return `/webhooks/${this.guild.guildId}/${this.id}`;
 	}
