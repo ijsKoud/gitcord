@@ -7,6 +7,7 @@ import GitCordGuildWebhook from "#database/structures/GuildWebhook.js";
 import GitCordGuild from "#database/structures/Guild.js";
 import axios from "axios";
 import { GITHUB_AVATAR_URL } from "#shared/constants.js";
+import { ChannelType } from "discord.js";
 
 export default class GitHubWebhookManager {
 	public constructor(public client: GitCordClient, public manager: GitHubManager) {}
@@ -92,21 +93,25 @@ export default class GitHubWebhookManager {
 
 		const embed = await this.manager.embedLoader.onEvent(payload, name);
 		if (embed) {
-			let threadId: string | undefined;
+			let threadName: string | undefined;
 			if (webhook.type === "FORUM") {
 				const parsedPayload = JSON.parse(payload);
-				let repository = "";
+				if ("repository" in parsedPayload) threadName = parsedPayload.repository.full_name as string;
 
-				if ("repository" in parsedPayload && typeof parsedPayload.repository !== "undefined") repository = parsedPayload.repository.full_name;
-				threadId = webhook.repositories.get(repository);
+				const channel = await this.client.channels.fetch(webhook.id);
+				if (!channel) return;
 
-				if (!threadId) {
-					// TODO: create new thread
-					return;
+				if (channel.type === ChannelType.GuildForum && !channel.threads.cache.get(threadName!)) {
+					await channel.threads.create({
+						name: threadName!,
+						message: { content: `GitHub Notifications for **${threadName}**: https://github.com/${threadName}` }
+					});
 				}
 			}
 
-			await webhook.discordWebhook.send({ embeds: [embed], avatarURL: GITHUB_AVATAR_URL, username: "GitCord", threadId });
+			await webhook.discordWebhook
+				.send({ embeds: [embed], avatarURL: GITHUB_AVATAR_URL, username: "GitCord", threadName })
+				.catch((err) => this.client.logger.error(err));
 			return;
 		}
 
