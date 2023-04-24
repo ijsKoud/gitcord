@@ -40,8 +40,15 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 		.join(" ");
 
-	if (event.name === "push") embed.setTitle(`${repository} — {commit_count} commit`);
-	else embed.setTitle(`${repository} — ${eventName}`);
+	switch (event.name) {
+		case "push":
+			embed.setTitle(`${repository} — {commit_count} commit`);
+			embed.setColor(EMBED_COLORS.FAILED);
+
+			break;
+		default:
+			embed.setTitle(`${repository} — ${eventName}`);
+	}
 
 	switch (event.action ?? "") {
 		case ActionTypes.COMPLETED:

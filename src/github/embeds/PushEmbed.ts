@@ -12,14 +12,15 @@ export default class extends GitHubEmbed {
 
 		const refUrl = `${event.repository.svn_url}/tree/${id}`;
 		const commits = event.commits.map(
-			(commit) => `[\`${commit.id.slice(0, 7)}\`](${commit.url}) ${commit.message} - ${commit.author.username || commit.author.name}`
+			(commit) =>
+				`[\`${commit.id.slice(0, 7)}\`](${commit.url}) ${commit.message.split("\n")[0]} - ${commit.author.username || commit.author.name}`
 		);
 
 		embed.setDescription(commits.join("\n").slice(0, 4096));
 		embed.addFields({ name: `On ${type}`, value: `[${id}](${refUrl})`.slice(0, 1024) });
 
 		const updatedTitle = embed.data.title!.replace(`{commit_count}`, commits.length.toString());
-		embed.setTitle(`${updatedTitle}${commits.length === 1 ? "" : "s"}`);
+		embed.setTitle(`${updatedTitle}${commits.length === 1 ? "" : "s"} ${event.forced ? `(forced)` : ""}`.trim());
 
 		return embed;
 	}
