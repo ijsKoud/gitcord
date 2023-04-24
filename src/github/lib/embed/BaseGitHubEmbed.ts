@@ -58,6 +58,8 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 		case ActionTypes.REOPENED:
 		case ActionTypes.REOPENED_BY_USER:
 		case ActionTypes.REREQUESTED:
+		case ActionTypes.UNASSIGNED:
+		case ActionTypes.ASSIGNED:
 			embed.setColor(EMBED_COLORS.UPDATE);
 			break;
 		default:

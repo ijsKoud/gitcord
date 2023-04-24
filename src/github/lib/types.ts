@@ -17,6 +17,8 @@ export enum ActionTypes {
 	CLOSED_BY_USER = "closed_by_user",
 	CLOSED = "closed",
 	FIXED = "fixed",
+	ASSIGNED = "assigned",
+	UNASSIGNED = "unassigned",
 	OPENED = "opened",
 	REOPENED = "reopened",
 	REOPENED_BY_USER = "reopened_by_user"
