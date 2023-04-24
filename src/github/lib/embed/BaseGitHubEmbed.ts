@@ -41,6 +41,7 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 		.join(" ");
 
 	switch (event.action ?? "") {
+		case ActionTypes.OPENED:
 		case ActionTypes.COMPLETED:
 		case ActionTypes.CREATED:
 		case ActionTypes.FIXED:

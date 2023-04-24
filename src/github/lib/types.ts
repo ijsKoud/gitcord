@@ -16,6 +16,7 @@ export enum ActionTypes {
 	APPEARED_IN_BRANCH = "appeared_in_branch",
 	CLOSED_BY_USER = "closed_by_user",
 	FIXED = "fixed",
+	OPENED = "opened",
 	REOPENED = "reopened",
 	REOPENED_BY_USER = "reopened_by_user"
 }
