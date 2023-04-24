@@ -82,6 +82,7 @@ export default class GitHubWebhookManager {
 		}
 
 		await this.receiveEvent(req.body, deliveryId, event, signature, webhook);
+		res.sendStatus(200);
 	}
 
 	/** Parses the incoming event data */

@@ -48,6 +48,9 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 			embed.setColor(EMBED_COLORS.SUCESS);
 			break;
 		case ActionTypes.CLOSED_BY_USER:
+		case ActionTypes.CLOSED:
+			embed.setColor(EMBED_COLORS.BLACK);
+			break;
 		case ActionTypes.DELETED:
 			embed.setColor(EMBED_COLORS.FAILED);
 			break;

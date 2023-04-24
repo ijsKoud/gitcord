@@ -18,7 +18,7 @@ export class GitHubEmbed implements GitHubEmbedOptions {
 	 * @param embed EmbedBuilder: Embed with default populated data (like author, title, color)
 	 * @returns Promise\<EmbedBuilder\> | EmbedBuilder
 	 */
-	public run(event: WebhookEvent, embed: EmbedBuilder): Promise<EmbedBuilder> | EmbedBuilder {
+	public run(event: WebhookEvent, embed: EmbedBuilder): Promise<EmbedBuilder | null> | EmbedBuilder | null {
 		this.logger.error(`${this.name}: GitHubEmbed does not have a valid run function.`);
 		return embed;
 	}
