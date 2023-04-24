@@ -1,15 +1,21 @@
 import { ZodError, z } from "zod";
 import { Logger } from "@snowcrystals/icicle";
 import { bold } from "colorette";
+import { SnowflakeRegex } from "@sapphire/discord-utilities";
 
 const logger = new Logger();
 // List of environment variables which are used by this application
 const envSchema = z.object({
+	// REQUIRED ENVIRONMENT VARIABLES
 	DISCORD_BOT_TOKEN: z.string().nonempty(),
-	DEV_SMEE_URL: z.string().nonempty().url(),
-	DEV_WEBHOOK_URL: z.string().nonempty().url(),
-	GITHUB_WEBHOOK_SECRET: z.string(),
-	PORT: z.string().max(4)
+	PORT: z.string().max(4),
+
+	// DEV ENVIRONMENT VARIABLES
+	DEV_SMEE_URL: z.string().url().optional(),
+	DEV_WEBHOOK_URL: z.string().url().optional(),
+	DEV_GUILD_ID: z.string().regex(SnowflakeRegex).optional(),
+	DEV_CHANNEL_ID: z.string().regex(SnowflakeRegex).optional(),
+	GITHUB_WEBHOOK_SECRET: z.string().optional()
 });
 
 /** Parses process.env to check if all required environment variables are present and valid */

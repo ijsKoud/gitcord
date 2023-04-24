@@ -1,9 +1,11 @@
-import type GitCordClient from "../../../discord/lib/GitCordClient.js";
+import type GitCordClient from "#discord/lib/GitCordClient.js";
 import { Webhooks } from "@octokit/webhooks";
 import EventSource from "eventsource";
 import type GitHubManager from "../GitHubManager.js";
-import { WebhookClient } from "discord.js";
 import express, { type Request, type Response } from "express";
+import GitCordGuildWebhook from "#database/structures/GuildWebhook.js";
+import GitCordGuild from "#database/structures/Guild.js";
+import axios from "axios";
 
 export default class GitHubWebhookManager {
 	public constructor(public client: GitCordClient, public manager: GitHubManager) {}
@@ -15,14 +17,32 @@ export default class GitHubWebhookManager {
 
 	/** Initialize development mode with Smee.io */
 	private initDev() {
-		const source = new EventSource(process.env.DEV_SMEE_URL);
+		const source = new EventSource(process.env.DEV_SMEE_URL!);
+		let webhook: GitCordGuildWebhook;
+
+		// Guild class cannot be initiated when client is not ready
+		this.client.once("ready", () => {
+			const guild = new GitCordGuild(this.client);
+			guild.init({ guildId: process.env.DEV_GUILD_ID!, guildWebhooks: [] });
+
+			webhook = new GitCordGuildWebhook(guild, {
+				guildId: guild.guildId,
+				repositories: [],
+				type: "CHANNEL",
+				webhookUrl: process.env.DEV_WEBHOOK_URL!,
+				webhookSecret: process.env.GITHUB_WEBHOOK_SECRET!,
+				webhookId: process.env.DEV_CHANNEL_ID!
+			});
+		});
+
 		source.onmessage = async (event) => {
 			const webhookEvent = JSON.parse(event.data);
 			await this.receiveEvent(
 				JSON.stringify(webhookEvent.body),
-				// webhookEvent["x-github-delivery"],
+				webhookEvent["x-github-delivery"],
 				webhookEvent["x-github-event"],
-				webhookEvent["x-hub-signature"]
+				webhookEvent["x-hub-signature"],
+				webhook
 			);
 		};
 
@@ -31,54 +51,65 @@ export default class GitHubWebhookManager {
 
 	private initProd() {
 		const server = express();
-		server.post(`/webhook/:guildId/:webhookId`, async (req, res) => {
-			try {
-				await this.handleRequest(req, res);
-			} catch (err) {
-				res.status(500).send({ message: "Internal server error, please try again later." });
-			}
-		});
-
-		server.listen(Number(process.env.PORT), () => this.client.logger.info(`[GITHUB]: Webhook server ready for event listening.`));
+		server
+			.post("/webhook/:guildId/:webhookId", this.handleRequest.bind(this))
+			.listen(Number(process.env.PORT), () => this.client.logger.info(`[GITHUB]: Webhook server ready for event listening.`));
 	}
 
-	private async handleRequest(req: Request<{ guildId: string }>, res: Response) {
-		const guild = this.client.guilds.cache.get(req.params.guildId);
+	private async handleRequest(req: Request, res: Response) {
+		const guild = this.client.databaseManager.configs.get(req.params.guildId);
 		if (!guild) {
 			res.status(404).send({ message: "Guild not found." });
 			return;
 		}
 
-		// TODO: get webhook from cache
-		const eventHeader = req.headers["x-github-event"];
-		const signatureHeader = req.headers["x-hub-signature"];
-		const event = Array.isArray(eventHeader) ? eventHeader[0] : eventHeader;
-		const signature = Array.isArray(signatureHeader) ? signatureHeader[0] : signatureHeader;
-		if (!event || !signature) {
-			res.status(400).send({ message: "Missing signature or event header" });
+		const webhook = guild.webhooks.get(req.params.webhookId);
+		if (!webhook) {
+			res.status(404).send({ message: "Webhook not found." });
 			return;
 		}
 
-		await this.receiveEvent(req.body, event, signature);
+		const deliveryHeader = req.headers["x-github-delivery"];
+		const eventHeader = req.headers["x-github-event"];
+		const signatureHeader = req.headers["x-hub-signature"];
+		const deliveryId = Array.isArray(deliveryHeader) ? deliveryHeader[0] : deliveryHeader;
+		const event = Array.isArray(eventHeader) ? eventHeader[0] : eventHeader;
+		const signature = Array.isArray(signatureHeader) ? signatureHeader[0] : signatureHeader;
+		if (!event || !signature || !deliveryId) {
+			res.status(400).send({ message: "Missing signature-, event- or delivery- header" });
+			return;
+		}
+
+		await this.receiveEvent(req.body, deliveryId, event, signature, webhook);
 	}
 
-	/** Parse the event data and make sure it is ra */
-	private async receiveEvent(payload: string, name: string, signature: string) {
-		const isValid = await this.verifyEvent(payload, signature);
+	/** Parses the incoming event data */
+	private async receiveEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: GitCordGuildWebhook) {
+		const isValid = await this.verifyEvent(payload, signature, webhook.secret);
 		if (!isValid) return;
 
 		const embed = await this.manager.embedLoader.onEvent(payload, name);
-		const webhook = new WebhookClient({
-			url: process.env.DEV_WEBHOOK_URL
-		});
-		if (embed) await webhook.send({ embeds: [embed] });
+		if (embed) {
+			await webhook.discordWebhook.send({ embeds: [embed] });
+			return;
+		}
+
+		await this.forwardEvent(payload, deliveryId, name, signature, `${webhook.discordUrl}/github`);
 	}
 
 	/** Verifies if the received event is valid and coming from GitHub */
-	private async verifyEvent(payload: string, signature: string) {
-		const webhook = new Webhooks({ secret: process.env.GITHUB_WEBHOOK_SECRET });
+	private async verifyEvent(payload: string, signature: string, secret: string) {
+		const webhook = new Webhooks({ secret });
 		const verified = await webhook.verify(payload, signature);
 
 		return verified;
+	}
+
+	/** Forward the event data if no applicable event handler is found */
+	private async forwardEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: string) {
+		const headers = { ContentType: "application/json", "X-Github-Event": name, "X-Github-Delivery": deliveryId, "X-Hub-Signature": signature };
+		await axios.post(webhook, payload, {
+			headers
+		});
 	}
 }
