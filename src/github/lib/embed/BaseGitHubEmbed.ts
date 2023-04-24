@@ -40,22 +40,6 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 		.join(" ");
 
-	switch (event.name) {
-		case "push":
-			embed.setTitle(`${repository} — {commit_count} commit`);
-			embed.setColor(EMBED_COLORS.FAILED);
-			break;
-		case "create":
-			embed.setTitle(`${repository} — {type} Created`);
-			break;
-		case "delete":
-			embed.setTitle(`${repository} — {type} Deleted`);
-			embed.setColor(EMBED_COLORS.FAILED);
-			break;
-		default:
-			embed.setTitle(`${repository} — ${eventName}`);
-	}
-
 	switch (event.action ?? "") {
 		case ActionTypes.COMPLETED:
 		case ActionTypes.CREATED:
@@ -74,6 +58,22 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 			break;
 		default:
 			embed.setColor(EMBED_COLORS.DEFAULT);
+	}
+
+	switch (event.name) {
+		case "push":
+			embed.setTitle(`${repository} — {commit_count} commit`);
+			embed.setColor(EMBED_COLORS.FAILED);
+			break;
+		case "create":
+			embed.setTitle(`${repository} — {type} Created`);
+			break;
+		case "delete":
+			embed.setTitle(`${repository} — {type} Deleted`);
+			embed.setColor(EMBED_COLORS.FAILED);
+			break;
+		default:
+			embed.setTitle(`${repository} — ${eventName}`);
 	}
 
 	return embed;

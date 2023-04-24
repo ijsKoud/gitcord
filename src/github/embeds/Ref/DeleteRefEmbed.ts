@@ -7,12 +7,9 @@ import _ from "lodash";
 @ApplyOptions<GitHubEmbedOptions>({ name: "delete" })
 export default class extends GitHubEmbed {
 	public override run(event: CreateEvent, embed: EmbedBuilder) {
-		const [, , ..._id] = event.ref.split(/\//g);
-		const id = _id.join("/");
 		const type = _.capitalize(event.ref_type);
-
 		const updatedTitle = embed.data.title!.replace("{type}", type);
-		embed.setTitle(updatedTitle).setDescription(`${type}: **${id}**`);
+		embed.setTitle(updatedTitle).setDescription(`${type}: **${event.ref}**`);
 
 		return embed;
 	}
