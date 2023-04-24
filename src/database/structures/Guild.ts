@@ -3,6 +3,7 @@ import type GitCordClient from "#discord/lib/GitCordClient.js";
 import { ChannelType, Collection, ForumChannel, Guild, TextChannel } from "discord.js";
 import GitCordGuildWebhook from "./GuildWebhook.js";
 import { randomBytes } from "node:crypto";
+import { GITHUB_AVATAR_URL } from "#shared/constants.js";
 
 export default class GitCordGuild {
 	public guild!: Guild;
@@ -37,7 +38,7 @@ export default class GitCordGuild {
 	 */
 	public async create(channel: ForumChannel | TextChannel) {
 		const type = channel.type === ChannelType.GuildForum ? "FORUM" : "CHANNEL";
-		const webhook = await channel.createWebhook({ name: "GitCord", avatar: "https://cdn.ijskoud.dev/files/2zVGPBN3ZmId.webp" }).catch(() => {
+		const webhook = await channel.createWebhook({ name: "GitCord", avatar: GITHUB_AVATAR_URL }).catch(() => {
 			throw new Error("Unable to create a webhook, probably missing permissions.");
 		});
 

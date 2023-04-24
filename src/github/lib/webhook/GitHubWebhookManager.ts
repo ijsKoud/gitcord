@@ -6,6 +6,7 @@ import express, { type Request, type Response } from "express";
 import GitCordGuildWebhook from "#database/structures/GuildWebhook.js";
 import GitCordGuild from "#database/structures/Guild.js";
 import axios from "axios";
+import { GITHUB_AVATAR_URL } from "#shared/constants.js";
 
 export default class GitHubWebhookManager {
 	public constructor(public client: GitCordClient, public manager: GitHubManager) {}
@@ -90,7 +91,21 @@ export default class GitHubWebhookManager {
 
 		const embed = await this.manager.embedLoader.onEvent(payload, name);
 		if (embed) {
-			await webhook.discordWebhook.send({ embeds: [embed] });
+			let threadId: string | undefined;
+			if (webhook.type === "FORUM") {
+				const parsedPayload = JSON.parse(payload);
+				let repository = "";
+
+				if ("repository" in parsedPayload && typeof parsedPayload.repository !== "undefined") repository = parsedPayload.repository.full_name;
+				threadId = webhook.repositories.get(repository);
+
+				if (!threadId) {
+					// TODO: create new thread
+					return;
+				}
+			}
+
+			await webhook.discordWebhook.send({ embeds: [embed], avatarURL: GITHUB_AVATAR_URL, username: "GitCord", threadId });
 			return;
 		}
 
