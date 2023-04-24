@@ -1,5 +1,5 @@
 import { Collection, EmbedBuilder } from "discord.js";
-import type GitCordClient from "../../../discord/lib/GitCordClient.js";
+import type GitCordClient from "#discord/lib/GitCordClient.js";
 import type { GitHubEmbed } from "./structures/GitHubEmbed.js";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -46,7 +46,7 @@ export default class GitHubEmbedLoader {
 		const contents = await readdir(path);
 		for await (const contentPath of contents) {
 			// If the provided path is a folder, read out the folder
-			if (statSync(join(path, contentPath)).isDirectory()) results = await this.getFiles(path, results);
+			if (statSync(join(path, contentPath)).isDirectory()) results = await this.getFiles(join(path, contentPath), results);
 			else results.push(join(path, contentPath));
 		}
 
