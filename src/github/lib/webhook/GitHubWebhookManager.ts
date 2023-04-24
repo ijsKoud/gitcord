@@ -107,7 +107,7 @@ export default class GitHubWebhookManager {
 
 	/** Forward the event data if no applicable event handler is found */
 	private async forwardEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: string) {
-		const headers = { ContentType: "application/json", "X-Github-Event": name, "X-Github-Delivery": deliveryId, "X-Hub-Signature": signature };
+		const headers = { "Content-Type": "application/json", "X-Github-Event": name, "X-Github-Delivery": deliveryId, "X-Hub-Signature": signature };
 		await axios.post(webhook, payload, {
 			headers
 		});
