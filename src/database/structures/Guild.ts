@@ -52,4 +52,21 @@ export default class GitCordGuild {
 
 		return gitcordWebhook;
 	}
+
+	/**
+	 * Deletes an existing webhook
+	 * @param webhookId The webhook to delete
+	 * @returns Boolean depending on the existence of the webhook
+	 * @throws DiscordApiError if the webhook deletion fails
+	 */
+	public async delete(webhookId: string) {
+		const webhook = this.webhooks.get(webhookId);
+		if (!webhook) return false;
+
+		await webhook.discordWebhook.delete();
+		await this.client.prisma.guildWebhook.delete({ where: { webhookId } });
+
+		this.webhooks.delete(webhookId);
+		return true;
+	}
 }
