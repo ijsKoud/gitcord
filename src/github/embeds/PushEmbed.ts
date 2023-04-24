@@ -2,6 +2,7 @@ import { GitHubEmbed, type GitHubEmbedOptions } from "../lib/embed/structures/Gi
 import type { PushEvent } from "@octokit/webhooks-types";
 import type { EmbedBuilder } from "discord.js";
 import { ApplyOptions } from "../lib/embed/decorators.js";
+import { EMBED_COLORS } from "#github/lib/types.js";
 
 @ApplyOptions<GitHubEmbedOptions>({ name: "push" })
 export default class extends GitHubEmbed {
@@ -21,6 +22,8 @@ export default class extends GitHubEmbed {
 
 		const updatedTitle = embed.data.title!.replace(`{commit_count}`, commits.length.toString());
 		embed.setTitle(`${updatedTitle}${commits.length === 1 ? "" : "s"} ${event.forced ? `(forced)` : ""}`.trim());
+
+		if (event.forced) embed.setColor(EMBED_COLORS.FAILED);
 
 		return embed;
 	}

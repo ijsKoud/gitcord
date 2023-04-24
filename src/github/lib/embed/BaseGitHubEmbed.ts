@@ -64,7 +64,6 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 	switch (event.name) {
 		case "push":
 			embed.setTitle(`${repository} — {commit_count} commit`);
-			embed.setColor(EMBED_COLORS.FAILED);
 			break;
 		case "create":
 			embed.setTitle(`${repository} — {type} Created`);
