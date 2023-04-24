@@ -616,14 +616,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/iglo@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "@snowcrystals/iglo@npm:1.2.2"
+"@snowcrystals/iglo@npm:next":
+  version: 1.3.0-next.676fbee.0
+  resolution: "@snowcrystals/iglo@npm:1.3.0-next.676fbee.0"
   dependencies:
     "@snowcrystals/icicle": 1.0.4
     discord.js: ^14.9.0
     lodash: ^4.17.21
-  checksum: 4d7b84d289a2a94bde75d1db63feaa0544c348b39802513987adf03462caed84658cf244fc3268e3c3513bd0cd7b4ca130264f809197ba8c4d08a179f5c7c1bb
+  checksum: 75fa847566388536e6ec2f54ce042f537d24ca6c1de673810ce9c3959e0a9531fbe6b769ed9d97aebd0b08553b65b26e8afc403e4a569e5614433e41839f7da7
   languageName: node
   linkType: hard
 
@@ -2549,7 +2549,7 @@ __metadata:
     "@sapphire/prettier-config": ^1.4.5
     "@sapphire/ts-config": ^4.0.0
     "@snowcrystals/icicle": ^1.0.4
-    "@snowcrystals/iglo": ^1.2.2
+    "@snowcrystals/iglo": next
     "@types/eventsource": ^1.1.11
     "@types/express": ^4.17.17
     "@types/node": ^18.16.0
