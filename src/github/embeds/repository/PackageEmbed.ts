@@ -8,10 +8,14 @@ import { EmbedLimits } from "@sapphire/discord-utilities";
 export default class extends GitHubEmbed {
 	public override run(event: PackageEvent, embed: EmbedBuilder) {
 		if (event.action !== "published") return null;
+		const registry = event.package.package_type === "CONTAINER" ? "ghcr.io" : event.package.package_type;
+
 		embed
 			.setURL(event.package.html_url)
 			.setDescription(
-				[`Package: **${event.package.name}**`, event.package.description ?? ""].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength)
+				[`Package: **${event.package.name}**`, `Registry: \`${registry}\``, event.package.description ?? ""]
+					.join("\n")
+					.slice(0, EmbedLimits.MaximumDescriptionLength)
 			);
 
 		return embed;
