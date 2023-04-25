@@ -7,6 +7,8 @@ import { EMBED_COLORS } from "#github/lib/types.js";
 @ApplyOptions<GitHubEmbedOptions>({ name: "push" })
 export default class extends GitHubEmbed {
 	public override run(event: PushEvent, embed: EmbedBuilder) {
+		if (!event.commits.length) return null;
+
 		const [, _type, ..._id] = event.ref.split(/\//g);
 		const type = _type === "tags" ? "tag" : "branch";
 		const id = _id.join("/");
@@ -17,7 +19,7 @@ export default class extends GitHubEmbed {
 				`[\`${commit.id.slice(0, 7)}\`](${commit.url}) ${commit.message.split("\n")[0]} - ${commit.author.username || commit.author.name}`
 		);
 
-		embed.setDescription(commits.join("\n").slice(0, 4096) || null);
+		embed.setDescription(commits.join("\n").slice(0, 4096));
 		embed.addFields({ name: `On ${type}`, value: `[${id}](${refUrl})`.slice(0, 1024) });
 
 		const updatedTitle = embed.data.title!.replace(`{commit_count}`, commits.length.toString());
