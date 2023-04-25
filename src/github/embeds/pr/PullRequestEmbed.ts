@@ -65,13 +65,17 @@ export default class extends GitHubEmbed {
 	}
 
 	private opened(event: PullRequestOpenedEvent | PullRequestReopenedEvent, embed: EmbedBuilder) {
-		embed.setDescription(
-			[`Title: **${event.pull_request.title}**\n`, `${event.pull_request.body}`].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength)
-		);
+		embed
+			.setTitle(`${embed.data.title} #${event.pull_request.id}`)
+			.setDescription(
+				[`Title: **${event.pull_request.title}**\n`, `${event.pull_request.body}`].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength)
+			);
 	}
 
 	private closed(event: PullRequestClosedEvent, embed: EmbedBuilder) {
-		embed.setDescription([`Title: **${event.pull_request.title}**`, `State: ${event.pull_request.merged ? "merged" : "closed"}`].join("\n"));
+		embed
+			.setTitle(`${embed.data.title} #${event.pull_request.id}`)
+			.setDescription([`Title: **${event.pull_request.title}**`, `State: ${event.pull_request.merged ? "merged" : "closed"}`].join("\n"));
 	}
 
 	private stageChange(event: PullRequestEvent, embed: EmbedBuilder) {
@@ -85,13 +89,13 @@ export default class extends GitHubEmbed {
 
 		embed
 			.setColor(EMBED_COLORS.UPDATE)
-			.setTitle(`${event.repository.full_name} — Pull Request Stage Update`)
+			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}: Stage Update`)
 			.setDescription(`**${event.pull_request.title}**\nState: **${state}**`);
 	}
 
 	private assignUpdate(event: PullRequestAssignedEvent | PullRequestUnassignedEvent, embed: EmbedBuilder) {
 		embed
-			.setTitle(`${event.repository.full_name} — Pull Request User ${_.capitalize(event.action)}`)
+			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}: User ${_.capitalize(event.action)}`)
 			.setDescription(
 				[
 					`**${event.pull_request.title}**`,
@@ -102,13 +106,15 @@ export default class extends GitHubEmbed {
 	}
 
 	private milestoneUpdate(event: PullRequestMilestonedEvent | PullRequestDemilestonedEvent, embed: EmbedBuilder) {
-		embed.setDescription(
-			[
-				`**${event.pull_request.title}**`,
-				`Action: \`${_.capitalize(event.action)}\``,
-				`Milestone: [${event.milestone.title}](${event.milestone.html_url})`
-			].join("\n")
-		);
+		embed
+			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}`)
+			.setDescription(
+				[
+					`**${event.pull_request.title}**`,
+					`Action: \`${_.capitalize(event.action)}\``,
+					`Milestone: [${event.milestone.title}](${event.milestone.html_url})`
+				].join("\n")
+			);
 	}
 
 	private reviewUpdate(event: PullRequestReviewRequestedEvent | PullRequestReviewRequestRemovedEvent, embed: EmbedBuilder) {
@@ -121,13 +127,15 @@ export default class extends GitHubEmbed {
 				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 				.join(" ");
 
-			embed.setDescription(
-				[
-					`**${event.pull_request.title}**`,
-					`Action: \`${action}\``,
-					`Reviewer: [${event.requested_reviewer.login}](${event.requested_reviewer.html_url})`
-				].join("\n")
-			);
+			embed
+				.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}`)
+				.setDescription(
+					[
+						`**${event.pull_request.title}**`,
+						`Action: \`${action}\``,
+						`Reviewer: [${event.requested_reviewer.login}](${event.requested_reviewer.html_url})`
+					].join("\n")
+				);
 		}
 	}
 }
