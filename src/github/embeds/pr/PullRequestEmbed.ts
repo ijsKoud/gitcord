@@ -96,25 +96,13 @@ export default class extends GitHubEmbed {
 	private assignUpdate(event: PullRequestAssignedEvent | PullRequestUnassignedEvent, embed: EmbedBuilder) {
 		embed
 			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}: User ${_.capitalize(event.action)}`)
-			.setDescription(
-				[
-					`**${event.pull_request.title}**`,
-					`Action: \`${_.capitalize(event.action)}\``,
-					`Assignee: [${event.assignee.login}](${event.assignee.html_url})`
-				].join("\n")
-			);
+			.setDescription([`**${event.pull_request.title}**`, `Assignee: [${event.assignee.login}](${event.assignee.html_url})`].join("\n"));
 	}
 
 	private milestoneUpdate(event: PullRequestMilestonedEvent | PullRequestDemilestonedEvent, embed: EmbedBuilder) {
 		embed
-			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}`)
-			.setDescription(
-				[
-					`**${event.pull_request.title}**`,
-					`Action: \`${_.capitalize(event.action)}\``,
-					`Milestone: [${event.milestone.title}](${event.milestone.html_url})`
-				].join("\n")
-			);
+			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}: ${_.capitalize(event.action)}`)
+			.setDescription([`**${event.pull_request.title}**`, `Milestone: [${event.milestone.title}](${event.milestone.html_url})`].join("\n"));
 	}
 
 	private reviewUpdate(event: PullRequestReviewRequestedEvent | PullRequestReviewRequestRemovedEvent, embed: EmbedBuilder) {
@@ -128,13 +116,11 @@ export default class extends GitHubEmbed {
 				.join(" ");
 
 			embed
-				.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}`)
+				.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}: ${action}`)
 				.setDescription(
-					[
-						`**${event.pull_request.title}**`,
-						`Action: \`${action}\``,
-						`Reviewer: [${event.requested_reviewer.login}](${event.requested_reviewer.html_url})`
-					].join("\n")
+					[`**${event.pull_request.title}**`, `Reviewer: [${event.requested_reviewer.login}](${event.requested_reviewer.html_url})`].join(
+						"\n"
+					)
 				);
 		}
 	}
