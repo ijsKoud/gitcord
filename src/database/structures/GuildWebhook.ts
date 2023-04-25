@@ -30,6 +30,18 @@ export default class GitCordGuildWebhook {
 		return `/webhooks/${this.guild.guildId}/${this.id}`;
 	}
 
+	/**
+	 * Adds a repository to the list of repositories
+	 * @param repository The repository to add
+	 * @param threadId The thread associated with the thread
+	 */
+	public async setRepository(repository: string, threadId: string) {
+		this.repositories.set(repository, threadId);
+
+		const prismaRepositories = this.repositories.map((thread, repo) => ({ [repo]: thread })).reduce((a, b) => ({ ...a, ...b }), {});
+		await this.guild.client.prisma.guildWebhook.update({ where: { webhookId: this.id }, data: { repositories: prismaRepositories } });
+	}
+
 	private parseRepositories(repositories: Prisma.JsonValue[]) {
 		const schema = z.array(
 			z.object({
