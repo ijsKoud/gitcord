@@ -90,7 +90,7 @@ export default class extends GitHubEmbed {
 		embed
 			.setColor(EMBED_COLORS.UPDATE)
 			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}: Stage Update`)
-			.setDescription(`**${event.pull_request.title}**\nState: **${state}**`);
+			.setDescription(`**${event.pull_request.title}**\nState: \`${state}\``);
 	}
 
 	private assignUpdate(event: PullRequestAssignedEvent | PullRequestUnassignedEvent, embed: EmbedBuilder) {
