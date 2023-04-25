@@ -70,6 +70,9 @@ export default function getBaseGitHubEmbed({ author, repository, event }: GetBas
 		case "push":
 			embed.setTitle(`${repository} — {commit_count} commit`);
 			break;
+		case "commit_comment":
+			embed.setTitle(`${repository} — Commit Comment Created`);
+			break;
 		case "create":
 			embed.setTitle(`${repository} — {type} Created`);
 			break;

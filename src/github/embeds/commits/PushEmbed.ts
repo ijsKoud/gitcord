@@ -1,7 +1,7 @@
-import { GitHubEmbed, type GitHubEmbedOptions } from "../lib/embed/structures/GitHubEmbed.js";
+import { GitHubEmbed, type GitHubEmbedOptions } from "#github/lib/embed/structures/GitHubEmbed.js";
 import type { PushEvent } from "@octokit/webhooks-types";
 import type { EmbedBuilder } from "discord.js";
-import { ApplyOptions } from "../lib/embed/decorators.js";
+import { ApplyOptions } from "#github/lib/embed/decorators.js";
 import { EMBED_COLORS } from "#github/lib/types.js";
 
 @ApplyOptions<GitHubEmbedOptions>({ name: "push" })

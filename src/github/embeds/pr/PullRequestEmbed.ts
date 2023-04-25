@@ -15,6 +15,7 @@ import type { EmbedBuilder } from "discord.js";
 import { ApplyOptions } from "#github/lib/embed/decorators.js";
 import { EMBED_COLORS } from "#github/lib/types.js";
 import _ from "lodash";
+import { EmbedLimits } from "@sapphire/discord-utilities";
 
 @ApplyOptions<GitHubEmbedOptions>({ name: "pull_request" })
 export default class extends GitHubEmbed {
@@ -64,7 +65,9 @@ export default class extends GitHubEmbed {
 	}
 
 	private opened(event: PullRequestOpenedEvent | PullRequestReopenedEvent, embed: EmbedBuilder) {
-		embed.setDescription([`Title: **${event.pull_request.title}**\n`, `${event.pull_request.body}`].join("\n").slice(0, 4096));
+		embed.setDescription(
+			[`Title: **${event.pull_request.title}**\n`, `${event.pull_request.body}`].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength)
+		);
 	}
 
 	private closed(event: PullRequestClosedEvent, embed: EmbedBuilder) {
