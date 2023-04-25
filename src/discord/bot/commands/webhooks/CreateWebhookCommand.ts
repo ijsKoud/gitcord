@@ -29,6 +29,9 @@ export default class extends Command<GitCordClient> {
 		if (!channel.channel || ![ChannelType.GuildText, ChannelType.GuildForum].includes(channel.channel.type)) return; // Fixes intellisense
 
 		const webhook = await config.create(channel.channel as TextChannel | ForumChannel);
-		await interaction.followUp({ content: `Webhook created, url: \`${webhook}\` --- Secret: \`${webhook.secret}\``, ephemeral: true });
+		await interaction.followUp({
+			content: `Webhook created, url: \`${process.env.API_BASE_URL}${webhook}\` --- Secret: \`${webhook.secret}\``,
+			ephemeral: true
+		});
 	}
 }

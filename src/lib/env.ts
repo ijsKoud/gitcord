@@ -8,6 +8,7 @@ const logger = new Logger();
 const envSchema = z.object({
 	// REQUIRED ENVIRONMENT VARIABLES
 	DISCORD_BOT_TOKEN: z.string().nonempty(),
+	API_BASE_URL: z.string().nonempty().url(),
 	PORT: z.string().max(4),
 
 	// DEV ENVIRONMENT VARIABLES

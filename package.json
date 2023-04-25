@@ -16,6 +16,7 @@
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch",
+		"start:docker": "prisma migrate deploy && node .",
 		"start:dev": "NODE_ENV=development nodemon ./dist",
 		"start": "node ./dist",
 		"lint": "eslint src",
