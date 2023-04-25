@@ -16,4 +16,4 @@ RUN yarn build
 ENV NODE_ENV="production"
 
 # Run NodeJS script
-CMD ["yarn", "run", "start"]
+CMD ["yarn", "run", "start:docker"]
