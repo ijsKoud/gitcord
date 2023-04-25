@@ -5,11 +5,13 @@ import type GitHubManager from "../GitHubManager.js";
 import express, { type Request, type Response } from "express";
 import GitCordGuildWebhook from "#database/structures/GuildWebhook.js";
 import GitCordGuild from "#database/structures/Guild.js";
-import axios from "axios";
 import { GITHUB_AVATAR_URL } from "#shared/constants.js";
 import { ChannelType } from "discord.js";
+import { RequestManager, RequestMethod } from "@discordjs/rest";
 
 export default class GitHubWebhookManager {
+	public requestManager = new RequestManager({});
+
 	public constructor(public client: GitCordClient, public manager: GitHubManager) {}
 
 	public init() {
@@ -115,7 +117,13 @@ export default class GitHubWebhookManager {
 			return;
 		}
 
-		await this.forwardEvent(payload, deliveryId, name, signature, `${webhook.discordUrl}/github`);
+		await this.forwardEvent(
+			payload,
+			deliveryId,
+			name,
+			signature,
+			`/webhooks/${webhook.discordWebhook.id}/${webhook.discordWebhook.token}/github`
+		);
 	}
 
 	/** Verifies if the received event is valid and coming from GitHub */
@@ -127,10 +135,10 @@ export default class GitHubWebhookManager {
 	}
 
 	/** Forward the event data if no applicable event handler is found */
-	private async forwardEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: string) {
+	private async forwardEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: `/${string}/github`) {
 		const headers = { "Content-Type": "application/json", "X-Github-Event": name, "X-Github-Delivery": deliveryId, "X-Hub-Signature": signature };
-		await axios.post(webhook, payload, {
-			headers
-		});
+		await this.requestManager
+			.setToken("null")
+			.queueRequest({ method: RequestMethod.Post, fullRoute: webhook, body: JSON.parse(payload), headers });
 	}
 }
