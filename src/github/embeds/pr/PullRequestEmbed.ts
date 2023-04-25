@@ -75,7 +75,7 @@ export default class extends GitHubEmbed {
 	private closed(event: PullRequestClosedEvent, embed: EmbedBuilder) {
 		embed
 			.setTitle(`${embed.data.title} #${event.pull_request.number}`)
-			.setDescription([`Title: **${event.pull_request.title}**`, `State: ${event.pull_request.merged ? "merged" : "closed"}`].join("\n"));
+			.setDescription([`Title: **${event.pull_request.title}**`, `State: \`${event.pull_request.merged ? "merged" : "closed"}\``].join("\n"));
 	}
 
 	private stageChange(event: PullRequestEvent, embed: EmbedBuilder) {
