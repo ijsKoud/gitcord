@@ -112,7 +112,7 @@ export default class GitHubWebhookManager {
 							name: repository,
 							message: { content: `GitHub Notifications for **${repository}**: https://github.com/${repository}` }
 						})
-						.catch(() => null);
+						.catch((err) => this.client.logger.error(`(GitHubWebhookManager): Unable to create new thread`, err));
 
 					if (!thread) return; // No thread created means we cannot post a message
 					threadId = thread.id;
