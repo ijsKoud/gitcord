@@ -66,7 +66,7 @@ export default class extends GitHubEmbed {
 
 	private opened(event: PullRequestOpenedEvent | PullRequestReopenedEvent, embed: EmbedBuilder) {
 		embed
-			.setTitle(`${embed.data.title} #${event.pull_request.id}`)
+			.setTitle(`${embed.data.title} #${event.pull_request.number}`)
 			.setDescription(
 				[`Title: **${event.pull_request.title}**\n`, `${event.pull_request.body}`].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength)
 			);
@@ -74,7 +74,7 @@ export default class extends GitHubEmbed {
 
 	private closed(event: PullRequestClosedEvent, embed: EmbedBuilder) {
 		embed
-			.setTitle(`${embed.data.title} #${event.pull_request.id}`)
+			.setTitle(`${embed.data.title} #${event.pull_request.number}`)
 			.setDescription([`Title: **${event.pull_request.title}**`, `State: ${event.pull_request.merged ? "merged" : "closed"}`].join("\n"));
 	}
 
@@ -89,13 +89,13 @@ export default class extends GitHubEmbed {
 
 		embed
 			.setColor(EMBED_COLORS.UPDATE)
-			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}: Stage Update`)
+			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}: Stage Update`)
 			.setDescription(`**${event.pull_request.title}**\nState: **${state}**`);
 	}
 
 	private assignUpdate(event: PullRequestAssignedEvent | PullRequestUnassignedEvent, embed: EmbedBuilder) {
 		embed
-			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}: User ${_.capitalize(event.action)}`)
+			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}: User ${_.capitalize(event.action)}`)
 			.setDescription(
 				[
 					`**${event.pull_request.title}**`,
@@ -107,7 +107,7 @@ export default class extends GitHubEmbed {
 
 	private milestoneUpdate(event: PullRequestMilestonedEvent | PullRequestDemilestonedEvent, embed: EmbedBuilder) {
 		embed
-			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}`)
+			.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}`)
 			.setDescription(
 				[
 					`**${event.pull_request.title}**`,
@@ -128,7 +128,7 @@ export default class extends GitHubEmbed {
 				.join(" ");
 
 			embed
-				.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.id}`)
+				.setTitle(`${event.repository.full_name} — Pull Request #${event.pull_request.number}`)
 				.setDescription(
 					[
 						`**${event.pull_request.title}**`,
