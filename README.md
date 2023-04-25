@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://ijskoud.dev/assets/svg/logo.svg" width="100px" />
+    <img src="https://cdn.discordapp.com/avatars/1018461517408120842/fb5707cc6be7d4c0dc365fd1f775ecf1.png?size=512" width="100px" />
     <h1>gitcord</h1>
   
   <p>🪝Custom GitHub embeds for Discord</p>
@@ -7,7 +7,7 @@
   <p align="center">
     <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
     <a href="/LICENSE" target="_blank">
-      <img alt="License: None" src="https://img.shields.io/badge/License-None-yellow.svg" />
+      <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
   </p>
 
@@ -20,11 +20,15 @@
 
 ## Information
 
-Just a template, like an uncolored drawing. That's all. ✏️
+A Discord bot which makes your GitHub Discord embeds prettier ✨
 
 ## Install
 
-To use this template, you will need the following: `yarn` and `node >= 18.12.1`.
+Want to add the bot to your server? [Click here](https://discord.com/api/oauth2/authorize?client_id=1018461517408120842&permissions=536870928&scope=bot%20applications.commands)
+You can also install your own instance, check the .env.example for all the required environment variables.
+### Installation Via Docker
+```bash
+docker run --name=gitcord -v .env:/gitcord/.env -p 3000:3000 ghcr.io/ijskoud/gitcord
 
 
 
@@ -43,6 +47,6 @@ This will always be open source project, even if I don't receive donations. But 
 
 ## License
 
-Project is licensed under the © [**None License**](/LICENSE)
+Project is licensed under the © [**MIT License**](/LICENSE)
 
 ---
