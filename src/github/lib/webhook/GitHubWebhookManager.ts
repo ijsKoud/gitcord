@@ -5,9 +5,13 @@ import type GitHubManager from "../GitHubManager.js";
 import express, { type Request, type Response } from "express";
 import GitCordGuildWebhook from "#database/structures/GuildWebhook.js";
 import GitCordGuild from "#database/structures/Guild.js";
-import axios from "axios";
+import { GITHUB_AVATAR_URL } from "#shared/constants.js";
+import { ChannelType } from "discord.js";
+import { RequestManager, RequestMethod } from "@discordjs/rest";
 
 export default class GitHubWebhookManager {
+	public requestManager = new RequestManager({});
+
 	public constructor(public client: GitCordClient, public manager: GitHubManager) {}
 
 	public init() {
@@ -81,6 +85,7 @@ export default class GitHubWebhookManager {
 		}
 
 		await this.receiveEvent(req.body, deliveryId, event, signature, webhook);
+		res.sendStatus(200);
 	}
 
 	/** Parses the incoming event data */
@@ -89,12 +94,38 @@ export default class GitHubWebhookManager {
 		if (!isValid) return;
 
 		const embed = await this.manager.embedLoader.onEvent(payload, name);
+		if (embed === null) return;
+
 		if (embed) {
-			await webhook.discordWebhook.send({ embeds: [embed] });
+			let threadName: string | undefined;
+			if (webhook.type === "FORUM") {
+				const parsedPayload = JSON.parse(payload);
+				if ("repository" in parsedPayload) threadName = parsedPayload.repository.full_name as string;
+
+				const channel = await this.client.channels.fetch(webhook.id);
+				if (!channel) return;
+
+				if (channel.type === ChannelType.GuildForum && !channel.threads.cache.get(threadName!)) {
+					await channel.threads.create({
+						name: threadName!,
+						message: { content: `GitHub Notifications for **${threadName}**: https://github.com/${threadName}` }
+					});
+				}
+			}
+
+			await webhook.discordWebhook
+				.send({ embeds: [embed], avatarURL: GITHUB_AVATAR_URL, username: "GitCord", threadName })
+				.catch((err) => this.client.logger.error(err));
 			return;
 		}
 
-		await this.forwardEvent(payload, deliveryId, name, signature, `${webhook.discordUrl}/github`);
+		await this.forwardEvent(
+			payload,
+			deliveryId,
+			name,
+			signature,
+			`/webhooks/${webhook.discordWebhook.id}/${webhook.discordWebhook.token}/github`
+		);
 	}
 
 	/** Verifies if the received event is valid and coming from GitHub */
@@ -106,10 +137,10 @@ export default class GitHubWebhookManager {
 	}
 
 	/** Forward the event data if no applicable event handler is found */
-	private async forwardEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: string) {
-		const headers = { ContentType: "application/json", "X-Github-Event": name, "X-Github-Delivery": deliveryId, "X-Hub-Signature": signature };
-		await axios.post(webhook, payload, {
-			headers
-		});
+	private async forwardEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: `/${string}/github`) {
+		const headers = { "Content-Type": "application/json", "X-Github-Event": name, "X-Github-Delivery": deliveryId, "X-Hub-Signature": signature };
+		await this.requestManager
+			.setToken("null")
+			.queueRequest({ method: RequestMethod.Post, fullRoute: webhook, body: JSON.parse(payload), headers });
 	}
 }
