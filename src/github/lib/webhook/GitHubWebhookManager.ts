@@ -97,24 +97,30 @@ export default class GitHubWebhookManager {
 		if (embed === null) return;
 
 		if (embed) {
-			let threadName: string | undefined;
+			let threadId: string | undefined;
 			if (webhook.type === "FORUM") {
-				const parsedPayload = JSON.parse(payload);
-				if ("repository" in parsedPayload) threadName = parsedPayload.repository.full_name as string;
+				const repository = this.manager.embedLoader.getRepository(payload);
+				threadId = webhook.repositories.get(repository);
 
 				const channel = await this.client.channels.fetch(webhook.id);
-				if (!channel) return;
+				if (!channel || channel.type !== ChannelType.GuildForum) return; // Invalid channel provided means we cannot post messages
 
-				if (channel.type === ChannelType.GuildForum && !channel.threads.cache.get(threadName!)) {
-					await channel.threads.create({
-						name: threadName!,
-						message: { content: `GitHub Notifications for **${threadName}**: https://github.com/${threadName}` }
-					});
+				if (!threadId) {
+					const thread = await channel.threads
+						.create({
+							name: repository,
+							message: { content: `GitHub Notifications for **${repository}**: https://github.com/${repository}` }
+						})
+						.catch(() => null);
+
+					if (!thread) return; // No thread created means we cannot post a message
+					threadId = thread.id;
+					await webhook.setRepository(repository, threadId);
 				}
 			}
 
 			await webhook.discordWebhook
-				.send({ embeds: [embed], avatarURL: GITHUB_AVATAR_URL, username: "GitCord", threadName })
+				.send({ embeds: [embed], avatarURL: GITHUB_AVATAR_URL, username: "GitCord", threadId })
 				.catch((err) => this.client.logger.error(err));
 			return;
 		}

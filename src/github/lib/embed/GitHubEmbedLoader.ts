@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { readdir } from "node:fs/promises";
 import { statSync } from "node:fs";
 import { underline } from "colorette";
+import type { Repository } from "@octokit/webhooks-types";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -34,6 +35,20 @@ export default class GitHubEmbedLoader {
 
 		const embed = await eventHandler._run(JSON.parse(payload));
 		return embed;
+	}
+
+	/**
+	 * Returns the repository name or DEFAULT if none is found
+	 * @param payload The event payload
+	 */
+	public getRepository(payload: string) {
+		const parsed = JSON.parse(payload);
+		if ("repository" in parsed) {
+			const repository = parsed.repository as Repository;
+			return repository.full_name;
+		}
+
+		return "DEFAULT";
 	}
 
 	/**
