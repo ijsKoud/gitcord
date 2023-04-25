@@ -1,5 +1,5 @@
 import { IgloClient, LogLevel } from "@snowcrystals/iglo";
-import { BOT_COMMANDS_DIR, BOT_INTERACTIONS_DIR, BOT_LISTENER_DIR } from "#shared/constants.js";
+import { BOT_COMMANDS_DIR, BOT_LISTENER_DIR } from "#shared/constants.js";
 import GitHubManager from "#github/lib/GitHubManager.js";
 import { PrismaClient } from "@prisma/client";
 import DatabaseManager from "#database/DatabaseManager.js";
@@ -13,7 +13,7 @@ export default class GitCordClient extends IgloClient {
 	public constructor() {
 		super({
 			client: { intents: ["GuildWebhooks", "Guilds"], allowedMentions: { repliedUser: true, roles: [], users: [] } },
-			paths: { commands: BOT_COMMANDS_DIR, events: BOT_LISTENER_DIR, interactions: BOT_INTERACTIONS_DIR },
+			paths: { commands: BOT_COMMANDS_DIR, events: BOT_LISTENER_DIR },
 			logger: { level: process.env.NODE_ENV === "development" ? LogLevel.Debug : LogLevel.Info, depth: 2 }
 		});
 	}
