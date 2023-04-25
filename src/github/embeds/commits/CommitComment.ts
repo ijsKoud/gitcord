@@ -8,9 +8,12 @@ import { EmbedLimits } from "@sapphire/discord-utilities";
 export default class extends GitHubEmbed {
 	public override run(event: CommitCommentEvent, embed: EmbedBuilder) {
 		const commit = event.comment.commit_id.slice(0, 7);
+		const commitUrl = `https://github.com/${event.repository.full_name}/commit/${event.comment.commit_id}`;
+
 		embed
+			.setURL(event.comment.html_url)
 			.setDescription(event.comment.body.slice(0, EmbedLimits.MaximumDescriptionLength))
-			.addFields([{ name: "On commit", value: `[\`${commit}\`](${event.comment.html_url})` }]);
+			.addFields([{ name: "On commit", value: `[\`${commit}\`](${commitUrl})` }]);
 
 		return embed;
 	}
