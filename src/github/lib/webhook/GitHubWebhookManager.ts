@@ -56,8 +56,8 @@ export default class GitHubWebhookManager {
 	private initProd() {
 		const server = express();
 		server
-			.get("*", (_, res) => res.redirect("https://ijskoud.dev/github/gitcord"))
 			.post("/webhook/:guildId/:webhookId", this.handleRequest.bind(this))
+			.get("*", (_, res) => res.redirect("https://ijskoud.dev/github/gitcord"))
 			.listen(Number(process.env.PORT), () => this.client.logger.info(`[GITHUB]: Webhook server ready for event listening.`));
 	}
 
