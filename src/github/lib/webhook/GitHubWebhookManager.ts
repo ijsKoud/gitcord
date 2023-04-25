@@ -94,6 +94,8 @@ export default class GitHubWebhookManager {
 		if (!isValid) return;
 
 		const embed = await this.manager.embedLoader.onEvent(payload, name);
+		if (embed === null) return;
+
 		if (embed) {
 			let threadName: string | undefined;
 			if (webhook.type === "FORUM") {

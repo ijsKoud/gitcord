@@ -28,9 +28,9 @@ export default class GitHubEmbedLoader {
 	 * @param name The name of the event
 	 * @returns EmbedBuilder | null depending on the availability of the handlers
 	 */
-	public async onEvent(payload: string, name: string): Promise<EmbedBuilder | null> {
+	public async onEvent(payload: string, name: string): Promise<EmbedBuilder | null | undefined> {
 		const eventHandler = this.events.get(name);
-		if (!eventHandler) return null;
+		if (!eventHandler) return undefined;
 
 		const embed = await eventHandler._run(JSON.parse(payload));
 		return embed;

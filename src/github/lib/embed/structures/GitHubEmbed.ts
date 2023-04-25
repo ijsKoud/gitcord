@@ -39,7 +39,7 @@ export class GitHubEmbed implements GitHubEmbedOptions {
 							username: sender.login,
 							displayName: sender.name,
 							profileImage: sender.avatar_url,
-							profileUrl: sender.url
+							profileUrl: sender.html_url
 						};
 					}
 					break;
@@ -47,7 +47,7 @@ export class GitHubEmbed implements GitHubEmbedOptions {
 					author = {
 						username: event.sender.login,
 						profileImage: event.sender.avatar_url,
-						profileUrl: event.sender.url
+						profileUrl: event.sender.html_url
 					};
 			}
 		}
