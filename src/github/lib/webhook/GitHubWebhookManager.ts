@@ -8,6 +8,7 @@ import GitCordGuild from "#database/structures/Guild.js";
 import { GITHUB_AVATAR_URL } from "#shared/constants.js";
 import { ChannelType } from "discord.js";
 import { RequestManager, RequestMethod } from "@discordjs/rest";
+import BodyParser from "body-parser";
 
 export default class GitHubWebhookManager {
 	public requestManager = new RequestManager({});
@@ -56,6 +57,7 @@ export default class GitHubWebhookManager {
 	private initProd() {
 		const server = express();
 		server
+			.use(BodyParser.json())
 			.post("/webhook/:guildId/:webhookId", this.handleRequest.bind(this))
 			.get("*", (_, res) => res.redirect("https://ijskoud.dev/github/gitcord"))
 			.listen(Number(process.env.PORT), () => this.client.logger.info(`[GITHUB]: Webhook server ready for event listening.`));
@@ -85,7 +87,7 @@ export default class GitHubWebhookManager {
 			return;
 		}
 
-		await this.receiveEvent(req.body, deliveryId, event, signature, webhook);
+		await this.receiveEvent(JSON.stringify(req.body), deliveryId, event, signature, webhook);
 		res.sendStatus(200);
 	}
 
