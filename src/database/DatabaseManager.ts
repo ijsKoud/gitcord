@@ -1,5 +1,5 @@
 import type GitCordClient from "#discord/lib/GitCordClient.js";
-import { Collection } from "discord.js";
+import { Collection, Guild } from "discord.js";
 import GitCordGuild from "./structures/Guild.js";
 
 export default class DatabaseManager {
@@ -32,5 +32,29 @@ export default class DatabaseManager {
 
 			this.configs.set(guildConfig.guildId, guildConfig);
 		}
+	}
+
+	/**
+	 * Creates a config for a guild
+	 * @param guild The guild which requires a config
+	 */
+	public async createGuild(guild: Guild) {
+		const prismaGuild = await this.client.prisma.guild.create({ data: { guildId: guild.id }, include: { guildWebhooks: true } });
+		const gitcordGuild = new GitCordGuild(this.client);
+		gitcordGuild.init(prismaGuild);
+
+		this.configs.set(guild.id, gitcordGuild);
+	}
+
+	/**
+	 * Deletes a guild config from the database and cache
+	 * @param guildId The id of the guild to delete
+	 */
+	public async deleteGuild(guildId: string) {
+		if (!this.configs.has(guildId)) return;
+
+		await this.client.prisma.guildWebhook.deleteMany({ where: { guildId } });
+		await this.client.prisma.guild.delete({ where: { guildId } });
+		this.configs.delete(guildId);
 	}
 }
