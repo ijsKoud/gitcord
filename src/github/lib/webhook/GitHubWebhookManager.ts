@@ -99,42 +99,40 @@ export default class GitHubWebhookManager {
 		const embed = await this.manager.embedLoader.onEvent(payload, name);
 		if (embed === null) return;
 
-		if (embed) {
-			let threadId: string | undefined;
-			if (webhook.type === "FORUM") {
-				const repository = this.manager.embedLoader.getRepository(payload);
-				threadId = webhook.repositories.get(repository);
+		let threadId: string | undefined;
+		if (webhook.type === "FORUM") {
+			const repository = this.manager.embedLoader.getRepository(payload);
+			threadId = webhook.repositories.get(repository);
 
-				const channel = await this.client.channels.fetch(webhook.id);
-				if (!channel || channel.type !== ChannelType.GuildForum) return; // Invalid channel provided means we cannot post messages
+			const channel = await this.client.channels.fetch(webhook.id);
+			if (!channel || channel.type !== ChannelType.GuildForum) return; // Invalid channel provided means we cannot post messages
 
-				if (!threadId) {
-					const thread = await channel.threads
-						.create({
-							name: repository,
-							message: { content: `GitHub Notifications for **${repository}**: https://github.com/${repository}` }
-						})
-						.catch((err) => this.client.logger.error(`(GitHubWebhookManager): Unable to create new thread`, err));
+			if (!threadId) {
+				const thread = await channel.threads
+					.create({
+						name: repository,
+						message: { content: `GitHub Notifications for **${repository}**: https://github.com/${repository}` }
+					})
+					.catch((err) => this.client.logger.error(`(GitHubWebhookManager): Unable to create new thread`, err));
 
-					if (!thread) return; // No thread created means we cannot post a message
-					threadId = thread.id;
-					await webhook.setRepository(repository, threadId);
-				}
+				if (!thread) return; // No thread created means we cannot post a message
+				threadId = thread.id;
+				await webhook.setRepository(repository, threadId);
 			}
+		}
 
+		if (embed) {
 			await webhook.discordWebhook
 				.send({ embeds: [embed], avatarURL: GITHUB_AVATAR_URL, username: "GitCord", threadId })
 				.catch((err) => this.client.logger.error(err));
 			return;
 		}
 
-		await this.forwardEvent(
-			payload,
-			deliveryId,
-			name,
-			signature,
-			`/webhooks/${webhook.discordWebhook.id}/${webhook.discordWebhook.token}/github`
-		);
+		const webhookPath = `/webhooks/${webhook.discordWebhook.id}/${webhook.discordWebhook.token}/github${
+			threadId ? `?thread_id=${threadId}` : ""
+		}` as const;
+
+		await this.forwardEvent(payload, deliveryId, name, signature, webhookPath);
 	}
 
 	/** Verifies if the received event is valid and coming from GitHub */
@@ -146,7 +144,13 @@ export default class GitHubWebhookManager {
 	}
 
 	/** Forward the event data if no applicable event handler is found */
-	private async forwardEvent(payload: string, deliveryId: string, name: string, signature: string, webhook: `/${string}/github`) {
+	private async forwardEvent(
+		payload: string,
+		deliveryId: string,
+		name: string,
+		signature: string,
+		webhook: `/${string}/github` | `/${string}/github${string}`
+	) {
 		const headers = { "Content-Type": "application/json", "X-Github-Event": name, "X-Github-Delivery": deliveryId, "X-Hub-Signature": signature };
 		await this.requestManager
 			.setToken("null")
