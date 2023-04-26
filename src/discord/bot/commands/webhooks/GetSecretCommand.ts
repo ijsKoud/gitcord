@@ -48,6 +48,9 @@ export default class extends Command<GitCordClient> {
 			return;
 		}
 
-		await interaction.reply({ content: `The secret for this webhook: \`${webhook.secret}\``, ephemeral: true });
+		await interaction.reply({
+			content: `The secret for this webhook: \`${webhook.secret}\` --- URL: ${process.env.API_BASE_URL}${webhook}`,
+			ephemeral: true
+		});
 	}
 }
