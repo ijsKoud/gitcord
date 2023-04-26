@@ -38,7 +38,7 @@ export default class GitCordGuildWebhook {
 	public async setRepository(repository: string, threadId: string) {
 		this.repositories.set(repository, threadId);
 
-		const prismaRepositories = this.repositories.map((thread, repo) => ({ [repo]: thread })).reduce((a, b) => ({ ...a, ...b }), {});
+		const prismaRepositories = this.repositories.map((thread, repo) => ({ name: repo, threadId: thread }));
 		await this.guild.client.prisma.guildWebhook.update({ where: { webhookId: this.id }, data: { repositories: prismaRepositories } });
 	}
 

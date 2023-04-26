@@ -108,12 +108,14 @@ export default class GitHubWebhookManager {
 			if (!channel || channel.type !== ChannelType.GuildForum) return; // Invalid channel provided means we cannot post messages
 
 			if (!threadId) {
-				const thread = await channel.threads
-					.create({
-						name: repository,
-						message: { content: `GitHub Notifications for **${repository}**: https://github.com/${repository}` }
-					})
-					.catch((err) => this.client.logger.error(`(GitHubWebhookManager): Unable to create new thread`, err));
+				const thread =
+					channel.threads.cache.find((th) => th.name === repository) ||
+					(await channel.threads
+						.create({
+							name: repository,
+							message: { content: `GitHub Notifications for **${repository}**: https://github.com/${repository}` }
+						})
+						.catch((err) => this.client.logger.error(`(GitHubWebhookManager): Unable to create new thread`, err)));
 
 				if (!thread) return; // No thread created means we cannot post a message
 				threadId = thread.id;
