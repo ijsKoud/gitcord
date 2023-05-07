@@ -55,7 +55,7 @@
 		"@octokit/webhooks-types": "^6.11.0",
 		"@prisma/client": "^4.13.0",
 		"@sapphire/discord-utilities": "^3.0.2",
-		"@snowcrystals/icicle": "^1.0.4",
+		"@snowcrystals/icicle": "^2.0.0",
 		"@snowcrystals/iglo": "1.2.3",
 		"axios": "^1.4.0",
 		"body-parser": "^1.20.2",
