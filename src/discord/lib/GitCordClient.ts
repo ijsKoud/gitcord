@@ -14,7 +14,7 @@ export default class GitCordClient extends IgloClient {
 		super({
 			client: { intents: ["GuildWebhooks", "Guilds"], allowedMentions: { repliedUser: true, roles: [], users: [] } },
 			paths: { commands: BOT_COMMANDS_DIR, events: BOT_LISTENER_DIR },
-			logger: { level: process.env.NODE_ENV === "development" ? LogLevel.Debug : LogLevel.Info, depth: 2 }
+			logger: { level: process.env.NODE_ENV === "development" ? LogLevel.Debug : LogLevel.Info, parser: { depth: 2 } }
 		});
 	}
 
