@@ -1,5 +1,5 @@
 {
-	"project.version": "1.0.1",
+	"project.version": "1.0.3",
 	"project.information": "A Discord bot which makes your GitHub Discord embeds prettier ✨",
 	"project.installation": [
 		"Want to add the bot to your server? [Click here](https://discord.com/api/oauth2/authorize?client_id=1018461517408120842&permissions=536870928&scope=bot%20applications.commands)",
