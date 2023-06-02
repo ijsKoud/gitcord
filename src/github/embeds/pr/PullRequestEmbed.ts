@@ -50,7 +50,7 @@ export default class extends GitHubEmbed {
 				break;
 			case "auto_merge_disabled":
 			case "auto_merge_enabled":
-			case "queued":
+			case "enqueued":
 			case "synchronize":
 			case "edited":
 			case "dequeued":
