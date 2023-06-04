@@ -7,6 +7,7 @@
 		"useUnknownInCatchVariables": false,
 		"module": "ESNext",
 		"moduleResolution": "NodeNext",
+		"skipLibCheck": true, // Temporary solution to compile issue: https://github.com/microsoft/TypeScript/issues/53087
 		"paths": {
 			"#discord/*": ["discord/*"],
 			"#github/*": ["github/*"],
