@@ -24,7 +24,7 @@ export default function parse() {
 	try {
 		envSchema.parse(process.env);
 	} catch (err) {
-		if (!(err instanceof ZodError<typeof envSchema>)) {
+		if (!(err instanceof ZodError)) {
 			console.error(err);
 			process.exit(1);
 		}
