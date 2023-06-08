@@ -25,8 +25,13 @@ export default class extends Command<GitCordClient> {
 			return;
 		}
 
+		const getChannelName = (id: string) => {
+			const channel = this.client.channels.cache.get(id);
+			return channel?.toString() || `#${id}`;
+		};
+
 		if (!input.value || typeof input.value !== "string") {
-			await interaction.respond(config.webhooks.map((webhook) => ({ name: webhook.id, value: webhook.id })));
+			await interaction.respond(config.webhooks.map((webhook) => ({ name: getChannelName(webhook.id), value: webhook.id })));
 			return;
 		}
 
@@ -34,7 +39,7 @@ export default class extends Command<GitCordClient> {
 		const allOptions = config.webhooks.map((webhook) => webhook.id);
 		const options = allOptions.filter((opt) => opt.startsWith(inputValue) || opt.endsWith(inputValue) || opt.includes(inputValue));
 
-		await interaction.respond(options.map((opt) => ({ name: opt, value: opt })));
+		await interaction.respond(options.map((opt) => ({ name: getChannelName(opt), value: opt })));
 	}
 
 	public override async run(interaction: CommandInteraction<"cached">) {
