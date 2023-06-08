@@ -11,7 +11,7 @@ import { RequestManager, RequestMethod } from "@discordjs/rest";
 import BodyParser from "body-parser";
 
 export default class GitHubWebhookManager {
-	public requestManager = new RequestManager({});
+	public requestManager = new RequestManager({ userAgentAppendix: "GitCord (https://github.com/ijsKoud/gitcord)" });
 
 	public constructor(public client: GitCordClient, public manager: GitHubManager) {}
 
@@ -51,7 +51,7 @@ export default class GitHubWebhookManager {
 			);
 		};
 
-		this.client.logger.info(`[GITHUB]: Smee.io connection ready for event listening.`);
+		this.client.logger.info("[GITHUB]: Smee.io connection ready for event listening.");
 	}
 
 	private initProd() {
@@ -60,7 +60,7 @@ export default class GitHubWebhookManager {
 			.use(BodyParser.json())
 			.post("/webhook/:guildId/:webhookId", this.handleRequest.bind(this))
 			.get("*", (_, res) => res.redirect("https://ijskoud.dev/github/gitcord"))
-			.listen(Number(process.env.PORT), () => this.client.logger.info(`[GITHUB]: Webhook server ready for event listening.`));
+			.listen(Number(process.env.PORT), () => this.client.logger.info("[GITHUB]: Webhook server ready for event listening."));
 	}
 
 	private async handleRequest(req: Request, res: Response) {
