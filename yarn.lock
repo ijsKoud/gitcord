@@ -496,37 +496,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "@octokit/openapi-types@npm:16.0.0"
-  checksum: 844f30a545da380d63c712e0eb733366bc567d1aab34529c79fdfbec3d73810e81d83f06fdab13058a5cbc7dae786db1a9b90b5b61b1e606854ee45d5ec5f194
+"@octokit/openapi-types@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "@octokit/openapi-types@npm:18.0.0"
+  checksum: d487d6c6c1965e583eee417d567e4fe3357a98953fc49bce1a88487e7908e9b5dbb3e98f60dfa340e23b1792725fbc006295aea071c5667a813b9c098185b56f
   languageName: node
   linkType: hard
 
-"@octokit/request-error@npm:^3.0.0":
-  version: 3.0.3
-  resolution: "@octokit/request-error@npm:3.0.3"
+"@octokit/request-error@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "@octokit/request-error@npm:4.0.2"
   dependencies:
-    "@octokit/types": ^9.0.0
+    "@octokit/types": ^10.0.0
     deprecation: ^2.0.0
     once: ^1.4.0
-  checksum: 5db0b514732686b627e6ed9ef1ccdbc10501f1b271a9b31f784783f01beee70083d7edcfeb35fbd7e569fa31fdd6762b1ff6b46101700d2d97e7e48e749520d0
+  checksum: 9510078f718be08cf74e7b04b45f67aa545a388787192ff1cd3ca0d066499963d641bf1fea76ef47d2657a55f0cf3e612e46bbf4f33a96436415d30a2e3bb00a
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "@octokit/types@npm:9.0.0"
+"@octokit/types@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "@octokit/types@npm:10.0.0"
   dependencies:
-    "@octokit/openapi-types": ^16.0.0
-  checksum: 5c7f5cca8f00f7c4daa0d00f4fe991c1598ec47cd6ced50b1c5fbe9721bb9dee0adc2acdee265a3a715bb984e53ef3dc7f1cfb7326f712c6d809d59fc5c6648d
+    "@octokit/openapi-types": ^18.0.0
+  checksum: 8aafba2ff0cd2435fb70c291bf75ed071c0fa8a865cf6169648732068a35dec7b85a345851f18920ec5f3e94ee0e954988485caac0da09ec3f6781cc44fe153a
   languageName: node
   linkType: hard
 
-"@octokit/webhooks-methods@npm:^3.0.0":
-  version: 3.0.2
-  resolution: "@octokit/webhooks-methods@npm:3.0.2"
-  checksum: 4608d6a394bd94846301b709f44adc2bde0f43517840c49d235e3cb355986e2e9736d60b4a39c3492b31c06d10401f32cab878ec83e83b890606f58619cad5ef
+"@octokit/webhooks-methods@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@octokit/webhooks-methods@npm:4.0.0"
+  checksum: 07010438e53a6a659f0d7d3596bf89e6795776165066553e76384d90cef077a1e259122733913468299a1a76c71536914eb871d0508fcbbd453468b21eeb30c7
   languageName: node
   linkType: hard
 
@@ -537,15 +537,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/webhooks@npm:^11.1.1":
-  version: 11.1.1
-  resolution: "@octokit/webhooks@npm:11.1.1"
+"@octokit/webhooks@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@octokit/webhooks@npm:12.0.1"
   dependencies:
-    "@octokit/request-error": ^3.0.0
-    "@octokit/webhooks-methods": ^3.0.0
+    "@octokit/request-error": ^4.0.0
+    "@octokit/webhooks-methods": ^4.0.0
     "@octokit/webhooks-types": 7.0.3
     aggregate-error: ^3.1.0
-  checksum: 5eeb1f2cbc2bced975595a4e02d6e5c362304ed3890f99cd26d120932cb6ac48a66915d9baeb976a7f0d4ae1995633b979fc5aadc7f0eb3a333e7dcc842848b8
+  checksum: 6698287b049ca52682945adc51991db5f86ca17fc21ec451c03cc631f28d01db2ba1c85977e3319e14a51a10b6e368d2dac8816514cf2f31e0bf410cabc131aa
   languageName: node
   linkType: hard
 
@@ -2683,7 +2683,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.6.5
     "@commitlint/config-angular": ^17.6.5
-    "@octokit/webhooks": ^11.1.1
+    "@octokit/webhooks": ^12.0.1
     "@octokit/webhooks-types": ^7.0.3
     "@prisma/client": ^4.15.0
     "@sapphire/discord-utilities": ^3.0.3
