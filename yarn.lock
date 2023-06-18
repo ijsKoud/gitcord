@@ -651,16 +651,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/icicle@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@snowcrystals/icicle@npm:2.0.1"
-  dependencies:
-    "@sapphire/timestamp": ^1.0.1
-    colorette: ^2.0.20
-  checksum: ddf43a018fb0202a1d11076bee3397875a60b98df57aabe46ba6c57b36aeaa5502eb021f76222383c2b56d78b8ba8a2910bc452437f5dde9c4ec282191010995
-  languageName: node
-  linkType: hard
-
 "@snowcrystals/icicle@npm:^2.0.4":
   version: 2.0.4
   resolution: "@snowcrystals/icicle@npm:2.0.4"
@@ -671,14 +661,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/iglo@npm:^1.2.5":
-  version: 1.2.5
-  resolution: "@snowcrystals/iglo@npm:1.2.5"
+"@snowcrystals/iglo@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "@snowcrystals/iglo@npm:1.2.6"
   dependencies:
-    "@snowcrystals/icicle": ^2.0.1
+    "@snowcrystals/icicle": ^2.0.4
     discord.js: ^14.11.0
     lodash: ^4.17.21
-  checksum: 7865e56613827d8dcc5e44e2747178ccbeeb7cf62ca181a46f8d7f40529aa786c2ced32ea69ee53bd231e3bed31aeedb8401d54795ea9aa0b031c0bbcb6cab35
+  checksum: dae9708e41b9bb01aafa05c8939736674b1cc59de4d21a61a24c128a26c2b9672080321366d538b1f12f7d180f1848d653e1780d1f733bb84c9592765c8a91df
   languageName: node
   linkType: hard
 
@@ -1996,10 +1986,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.1.4":
-  version: 16.1.4
-  resolution: "dotenv@npm:16.1.4"
-  checksum: c1b2e13df4d374a6a29e134c56c7b040ba20500677fe8b9939ea654f3b3badb9aaa0b172e40e4dfa1233a4177dbb8fb79d84cc79a50ac9c9641fe2ad98c14876
+"dotenv@npm:^16.3.1":
+  version: 16.3.1
+  resolution: "dotenv@npm:16.3.1"
+  checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
   languageName: node
   linkType: hard
 
@@ -2701,7 +2691,7 @@ __metadata:
     "@sapphire/prettier-config": ^1.4.5
     "@sapphire/ts-config": ^4.0.0
     "@snowcrystals/icicle": ^2.0.4
-    "@snowcrystals/iglo": ^1.2.5
+    "@snowcrystals/iglo": ^1.2.6
     "@types/body-parser": ^1.19.2
     "@types/eventsource": ^1.1.11
     "@types/express": ^4.17.17
@@ -2713,7 +2703,7 @@ __metadata:
     body-parser: ^1.20.2
     colorette: 2.0.20
     discord.js: ^14.11.0
-    dotenv: ^16.1.4
+    dotenv: ^16.3.1
     eslint: ^8.42.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-prettier: ^4.2.1
