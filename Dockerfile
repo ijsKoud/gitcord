@@ -1,19 +1,42 @@
-FROM node:20-alpine
+FROM node:18-alpine AS base
+
+
+# --- Installer ---
+FROM base AS installer
 WORKDIR /gitcord
 
-# Copy Existing Files
-COPY package.json yarn.lock .yarnrc.yml tsconfig.json ./
-COPY .yarn ./.yarn
-COPY src ./src
-COPY prisma ./prisma
+RUN apk add --no-cache libc6-compat
+RUN apk update
 
-# Install dependencies & build the application
-RUN yarn install --immutable
+# Install dependencies
+COPY . .
+RUN yarn --immutable
 RUN yarn prisma generate
 RUN yarn build
 
-# Register Environment Variables
+# Remove dev-dependencies from node_modules
+RUN yarn pinst --disable
+RUN yarn workspaces focus --production --all
+
+
+# --- Runner ---
+FROM base AS runner
+WORKDIR /gitcord
+
 ENV NODE_ENV="production"
 
-# Run NodeJS script
-CMD ["yarn", "run", "start:docker"]
+# Set the user
+RUN addgroup --system --gid 1001 app
+RUN adduser --system --uid 1001 app
+USER app
+
+# Copy over the application
+COPY --from=installer --chown=app:app /gitcord/dist ./dist
+COPY --from=installer --chown=app:app /gitcord/prisma ./prisma
+
+# Copy over the packages
+COPY --from=installer --chown=app:app /gitcord/yarn.lock yarn.lock
+COPY --from=installer --chown=app:app /gitcord/package.json package.json
+COPY --from=installer --chown=app:app /gitcord/node_modules node_modules
+
+CMD yarn start
