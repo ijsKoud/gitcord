@@ -31,8 +31,6 @@ You can also install your own instance, check the .env.example for all the requi
 docker run --name=gitcord -v .env:/gitcord/.env -p 3000:3000 ghcr.io/ijskoud/gitcord
 ```
 
-
-
 ## Author
 
 👤 **ijsKoud**
