@@ -14,6 +14,7 @@ import { ApplyOptions } from "#github/lib/embed/decorators.js";
 import { EMBED_COLORS } from "#github/lib/types.js";
 import _ from "lodash";
 import { EmbedLimits } from "@sapphire/discord-utilities";
+import MarkdownParser from "#github/lib/embed/MarkdownParser.js";
 
 @ApplyOptions<GitHubEmbedOptions>({ name: "issues" })
 export default class extends GitHubEmbed {
@@ -58,13 +59,15 @@ export default class extends GitHubEmbed {
 	private opened(event: IssuesOpenedEvent | IssuesReopenedEvent, embed: EmbedBuilder) {
 		embed
 			.setTitle(`${embed.data.title} #${event.issue.number}`)
-			.setDescription([`Title: **${event.issue.title}**\n`, `${event.issue.body}`].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength));
+			.setDescription(
+				[`# ${event.issue.title}\n`, MarkdownParser(event.issue.body ?? "")].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength)
+			);
 	}
 
 	private closed(event: IssuesClosedEvent, embed: EmbedBuilder) {
 		embed
 			.setTitle(`${embed.data.title} #${event.issue.number}`)
-			.setDescription([`Title: **${event.issue.title}**`, `State: ${event.issue.active_lock_reason ?? "closed"}`].join("\n"));
+			.setDescription([`### ${event.issue.title}`, `State: ${event.issue.active_lock_reason ?? "closed"}`].join("\n"));
 	}
 
 	private stageChange(event: IssuesEvent, embed: EmbedBuilder) {
@@ -79,7 +82,7 @@ export default class extends GitHubEmbed {
 		embed
 			.setColor(EMBED_COLORS.UPDATE)
 			.setTitle(`${event.repository.full_name} — Issue #${event.issue.number}: Stage Update`)
-			.setDescription(`**${event.issue.title}**\nState: **${state}**`);
+			.setDescription(`### ${event.issue.title}\nState: **${state}**`);
 	}
 
 	private assignUpdate(event: IssuesAssignedEvent | IssuesUnassignedEvent, embed: EmbedBuilder) {
@@ -87,7 +90,7 @@ export default class extends GitHubEmbed {
 			.setTitle(`${event.repository.full_name} — Issue #${event.issue.number}: User ${_.capitalize(event.action)}`)
 			.setDescription(
 				[
-					`**${event.issue.title}**`,
+					`### ${event.issue.title}`,
 					`Action: \`${_.capitalize(event.action)}\``,
 					`Assignee: [${event.assignee?.login}](${event.assignee?.html_url})`
 				].join("\n")
@@ -99,7 +102,7 @@ export default class extends GitHubEmbed {
 			.setTitle(`${event.repository.full_name} — Issue #${event.issue.number}`)
 			.setDescription(
 				[
-					`**${event.issue.title}**`,
+					`### ${event.issue.title}`,
 					`Action: \`${_.capitalize(event.action)}\``,
 					`Milestone: [${event.milestone.title}](${event.milestone.html_url})`
 				].join("\n")
