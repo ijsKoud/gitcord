@@ -3,6 +3,7 @@ import type { IssueCommentEvent } from "@octokit/webhooks-types";
 import type { EmbedBuilder } from "discord.js";
 import { ApplyOptions } from "#github/lib/embed/decorators.js";
 import { EmbedLimits } from "@sapphire/discord-utilities";
+import MarkdownParser from "#github/lib/embed/MarkdownParser.js";
 
 @ApplyOptions<GitHubEmbedOptions>({ name: "issue_comment" })
 export default class extends GitHubEmbed {
@@ -15,7 +16,7 @@ export default class extends GitHubEmbed {
 		embed
 			.setTitle(`${event.repository.full_name} — ${isPr ? "Pull Request" : "Issue"} Comment Created`)
 			.setURL(event.comment.html_url)
-			.setDescription(event.comment.body.slice(0, EmbedLimits.MaximumDescriptionLength))
+			.setDescription(MarkdownParser(event.comment.body).slice(0, EmbedLimits.MaximumDescriptionLength))
 			.addFields([{ name: `On ${isPr ? "Pull Request" : "Issue"}`, value: `[${issue}](${event.issue.html_url})` }]);
 
 		return embed;
