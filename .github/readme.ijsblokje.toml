@@ -7,7 +7,7 @@ license = "MIT"
 [project]
 icon = "https://cdn.discordapp.com/avatars/1018461517408120842/fb5707cc6be7d4c0dc365fd1f775ecf1.png?size=512"
 icon_width = "100px"
-version = "1.1.0"
+version = "1.1.1"
 
 [variables]
 information = "A Discord bot which makes your GitHub Discord embeds prettier ✨"
