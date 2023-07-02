@@ -530,43 +530,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/webhooks-types@npm:7.0.3, @octokit/webhooks-types@npm:^7.0.3":
-  version: 7.0.3
-  resolution: "@octokit/webhooks-types@npm:7.0.3"
-  checksum: 2edcfc275e413ff488742aa44ccc9fa688673b5c81ceaea3aad9eb39b6508628fdc721e863cab1d4d509f7ec4d2d4e3a02aa59281345df3d54cba139507e7c18
+"@octokit/webhooks-types@npm:7.1.0, @octokit/webhooks-types@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@octokit/webhooks-types@npm:7.1.0"
+  checksum: 5aea38c38e97cb1b8d54c805c17c4015ee937d0b1ad550adc64eaf2e90bfbaf1e00c878490c10b43e31a11563e8d02183b86268ed588b04e39b22d5fd27807cf
   languageName: node
   linkType: hard
 
-"@octokit/webhooks@npm:^12.0.1":
-  version: 12.0.1
-  resolution: "@octokit/webhooks@npm:12.0.1"
+"@octokit/webhooks@npm:^12.0.2":
+  version: 12.0.2
+  resolution: "@octokit/webhooks@npm:12.0.2"
   dependencies:
     "@octokit/request-error": ^4.0.0
     "@octokit/webhooks-methods": ^4.0.0
-    "@octokit/webhooks-types": 7.0.3
+    "@octokit/webhooks-types": 7.1.0
     aggregate-error: ^3.1.0
-  checksum: 6698287b049ca52682945adc51991db5f86ca17fc21ec451c03cc631f28d01db2ba1c85977e3319e14a51a10b6e368d2dac8816514cf2f31e0bf410cabc131aa
+  checksum: 48092a99d597064a1062b8abf012a11afc72dad39df2a7efa9a8c8aed784413a6eb3dcb348c34f4fa91a457041a6e93464c4d4defc5a216c1f2a79afa5bc3e19
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^4.16.1":
-  version: 4.16.1
-  resolution: "@prisma/client@npm:4.16.1"
+"@prisma/client@npm:^4.16.2":
+  version: 4.16.2
+  resolution: "@prisma/client@npm:4.16.2"
   dependencies:
-    "@prisma/engines-version": 4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c
+    "@prisma/engines-version": 4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: da715b6e930f56493cb7c6232b179250a4e93bbc2b5fe42a84cb9511d127b6fd89e1271f83e1d531bd4fdd7e87f6ac0701b30174cf89212ae7da88097de31026
+  checksum: 38e1356644a764946c69c8691ea4bbed0ba37739d833a435625bd5435912bed4b9bdd7c384125f3a4ab8128faf566027985c0f0840a42741c338d72e40b5d565
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c":
-  version: 4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c
-  resolution: "@prisma/engines-version@npm:4.16.0-66.b20ead4d3ab9e78ac112966e242ded703f4a052c"
-  checksum: 23183cab33f95e0711cd6cee7642f4beeeb77b8b0aa54b419f55097bfb96863a11a28f6509ab27fef0ea794522e188044ce850993a25c341333f8305711a255f
+"@prisma/engines-version@npm:4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81":
+  version: 4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81
+  resolution: "@prisma/engines-version@npm:4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81"
+  checksum: b42c6abe7c1928e546f15449e40ffa455701ef2ab1f62973628ecb4e19ff3652e34609a0d83196d1cbd0864adb44c55e082beec852b11929acf1c15fb57ca45a
   languageName: node
   linkType: hard
 
@@ -661,14 +661,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/iglo@npm:^1.2.6":
-  version: 1.2.6
-  resolution: "@snowcrystals/iglo@npm:1.2.6"
+"@snowcrystals/iglo@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "@snowcrystals/iglo@npm:1.2.7"
   dependencies:
     "@snowcrystals/icicle": ^2.0.4
     discord.js: ^14.11.0
     lodash: ^4.17.21
-  checksum: dae9708e41b9bb01aafa05c8939736674b1cc59de4d21a61a24c128a26c2b9672080321366d538b1f12f7d180f1848d653e1780d1f733bb84c9592765c8a91df
+  checksum: 69eb136b3f4e41e20446e7ad48504d62dc69afc5a11e00f2fb329929e8522b453dcffc24b0f6c0c9f7a1c062edc030fb79fa762dee54b85a2633eff914aa10cd
   languageName: node
   linkType: hard
 
@@ -2683,15 +2683,15 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.6.6
     "@commitlint/config-angular": ^17.6.6
-    "@octokit/webhooks": ^12.0.1
-    "@octokit/webhooks-types": ^7.0.3
-    "@prisma/client": ^4.16.1
+    "@octokit/webhooks": ^12.0.2
+    "@octokit/webhooks-types": ^7.1.0
+    "@prisma/client": ^4.16.2
     "@sapphire/discord-utilities": ^3.0.3
     "@sapphire/eslint-config": ^4.4.2
     "@sapphire/prettier-config": ^1.4.5
     "@sapphire/ts-config": ^4.0.0
     "@snowcrystals/icicle": ^2.0.4
-    "@snowcrystals/iglo": ^1.2.6
+    "@snowcrystals/iglo": ^1.2.7
     "@types/body-parser": ^1.19.2
     "@types/eventsource": ^1.1.11
     "@types/express": ^4.17.17
