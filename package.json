@@ -44,7 +44,7 @@
 		"nodemon": "^3.0.1",
 		"pinst": "^3.0.0",
 		"prettier": "^2.8.8",
-		"prisma": "^4.16.2",
+		"prisma": "^5.0.0",
 		"typescript": "5.1.6"
 	},
 	"engines": {
@@ -54,7 +54,7 @@
 	"dependencies": {
 		"@octokit/webhooks": "^12.0.3",
 		"@octokit/webhooks-types": "^7.1.0",
-		"@prisma/client": "^4.16.2",
+		"@prisma/client": "^5.0.0",
 		"@sapphire/discord-utilities": "^3.0.3",
 		"@snowcrystals/icicle": "^2.0.4",
 		"@snowcrystals/iglo": "^1.2.7",
