@@ -14,7 +14,10 @@ export default class GitCordGuildWebhook {
 	public repositories = new Collection<string, string>();
 	public discordWebhook: WebhookClient;
 
-	public constructor(public guild: GitCordGuild, webhook: GuildWebhook) {
+	public constructor(
+		public guild: GitCordGuild,
+		webhook: GuildWebhook
+	) {
 		this.id = webhook.webhookId;
 		this.type = webhook.type;
 

@@ -13,7 +13,10 @@ import BodyParser from "body-parser";
 export default class GitHubWebhookManager {
 	public requestManager = new RequestManager({ userAgentAppendix: "GitCord (https://github.com/ijsKoud/gitcord)" });
 
-	public constructor(public client: GitCordClient, public manager: GitHubManager) {}
+	public constructor(
+		public client: GitCordClient,
+		public manager: GitHubManager
+	) {}
 
 	public init() {
 		if (process.env.NODE_ENV === "development") this.initDev();
