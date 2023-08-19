@@ -9,7 +9,7 @@ const DIV_BLOCK_REGEX = /<div>([\s\S]*?)<\/div>/g;
  */
 function markdownParser(content: string): string {
 	return content
-		.replace(COMMENT_REGEX, "$1")
+		.replace(COMMENT_REGEX, "")
 		.replace(SUMMARY_BLOCK_REGEX, "➤ **$1**")
 		.replace(DETAILS_BLOCK_REGEX, "$1")
 		.replace(DIV_BLOCK_REGEX, "$1")
