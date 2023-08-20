@@ -1,4 +1,4 @@
-const COMMENT_REGEX = /<!--([\s\S]*?)-->/g;
+const COMMENT_REGEX = /<!--[\s\S]*?-->/g;
 const SUMMARY_BLOCK_REGEX = /<summary>([\s\S]*?)<\/summary>/g;
 const DETAILS_BLOCK_REGEX = /<details>([\s\S]*?)<\/details>/g;
 const DIV_BLOCK_REGEX = /<div>([\s\S]*?)<\/div>/g;

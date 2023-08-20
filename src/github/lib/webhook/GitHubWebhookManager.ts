@@ -7,11 +7,11 @@ import GitCordGuildWebhook from "#database/structures/GuildWebhook.js";
 import GitCordGuild from "#database/structures/Guild.js";
 import { GITHUB_AVATAR_URL } from "#shared/constants.js";
 import { ChannelType } from "discord.js";
-import { RequestManager, RequestMethod } from "@discordjs/rest";
+import { REST, RequestMethod } from "@discordjs/rest";
 import BodyParser from "body-parser";
 
 export default class GitHubWebhookManager {
-	public requestManager = new RequestManager({ userAgentAppendix: "GitCord (https://github.com/ijsKoud/gitcord)" });
+	public requestManager = new REST({ userAgentAppendix: "GitCord (https://github.com/ijsKoud/gitcord)" });
 
 	public constructor(
 		public client: GitCordClient,
