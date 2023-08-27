@@ -547,24 +547,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "@prisma/client@npm:5.1.1"
+"@prisma/client@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "@prisma/client@npm:5.2.0"
   dependencies:
-    "@prisma/engines-version": 5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e
+    "@prisma/engines-version": 5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: 0236462afc722eb6a8dc0cc53843e5f0092cfe41a5dd5e794e41ba34be4d2166ba564c21dbb3c4436111b7a40ba4f66fc1e8328d7f17cdbfb3ac616b7efd4232
+  checksum: ad523b7a54e31d365ecac7bdb89f5a89f62e616f5f567f5dd5060e86b122253a4652ea778c0ccbab31906e2170110e808839fbae7ee91a4fd16a8282ee86f5f1
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e":
-  version: 5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e
-  resolution: "@prisma/engines-version@npm:5.1.1-1.6a3747c37ff169c90047725a05a6ef02e32ac97e"
-  checksum: cfea78fe98cff694eea31335c4167f375cdd8a848d6699bd0035d4a9c05184bf6fe57959249220c098c6214a424c9519f7cd17c51119234866840bd1030c87e1
+"@prisma/engines-version@npm:5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f":
+  version: 5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f
+  resolution: "@prisma/engines-version@npm:5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f"
+  checksum: 7a0fde44dad7902aef0035a30073c8e3178bccbaf65f688583cf3db94e36d160fd0a52cae8b6422b670facdbd4201861e1d6e2c7371d57ef27b58a2e1c524213
   languageName: node
   linkType: hard
 
@@ -650,14 +650,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/iglo@npm:^1.2.7":
-  version: 1.2.7
-  resolution: "@snowcrystals/iglo@npm:1.2.7"
+"@snowcrystals/iglo@npm:^1.2.8":
+  version: 1.2.8
+  resolution: "@snowcrystals/iglo@npm:1.2.8"
   dependencies:
     "@snowcrystals/icicle": ^2.0.4
-    discord.js: ^14.11.0
+    discord.js: ^14.13.0
     lodash: ^4.17.21
-  checksum: 69eb136b3f4e41e20446e7ad48504d62dc69afc5a11e00f2fb329929e8522b453dcffc24b0f6c0c9f7a1c062edc030fb79fa762dee54b85a2633eff914aa10cd
+  checksum: 774bdb889943d6528206422a3dce27dbb46f6a6613457d5b7622d23b00c83c66acc772c9fe85b51a3161e480e2f06bc7825d92af9b96f02d14647645b11512a2
   languageName: node
   linkType: hard
 
@@ -1233,14 +1233,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "axios@npm:1.4.0"
+"axios@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "axios@npm:1.5.0"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: 7fb6a4313bae7f45e89d62c70a800913c303df653f19eafec88e56cea2e3821066b8409bc68be1930ecca80e861c52aa787659df0ffec6ad4d451c7816b9386b
+  checksum: e7405a5dbbea97760d0e6cd58fecba311b0401ddb4a8efbc4108f5537da9b3f278bde566deb777935a960beec4fa18e7b8353881f2f465e4f2c0e949fead35be
   languageName: node
   linkType: hard
 
@@ -1858,7 +1858,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discord.js@npm:^14.11.0, discord.js@npm:^14.13.0":
+"discord.js@npm:^14.13.0":
   version: 14.13.0
   resolution: "discord.js@npm:14.13.0"
   dependencies:
@@ -2547,12 +2547,12 @@ __metadata:
     "@commitlint/config-angular": ^17.7.0
     "@octokit/webhooks": ^12.0.3
     "@octokit/webhooks-types": ^7.2.0
-    "@prisma/client": ^5.1.1
+    "@prisma/client": ^5.2.0
     "@sapphire/discord-utilities": ^3.1.0
     "@sapphire/eslint-config": ^5.0.1
     "@sapphire/ts-config": ^4.0.1
     "@snowcrystals/icicle": ^2.0.4
-    "@snowcrystals/iglo": ^1.2.7
+    "@snowcrystals/iglo": ^1.2.8
     "@snowcrystals/prettier-config": ^1.0.0
     "@types/body-parser": ^1.19.2
     "@types/eventsource": ^1.1.11
@@ -2561,7 +2561,7 @@ __metadata:
     "@types/node": ^18.17.6
     "@typescript-eslint/eslint-plugin": ^6.4.0
     "@typescript-eslint/parser": ^6.4.0
-    axios: ^1.4.0
+    axios: ^1.5.0
     body-parser: ^1.20.2
     colorette: 2.0.20
     discord.js: ^14.13.0
