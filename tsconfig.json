@@ -5,7 +5,7 @@
 		"baseUrl": "./src",
 		"noUnusedParameters": false,
 		"useUnknownInCatchVariables": false,
-		"module": "ESNext",
+		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"skipLibCheck": true, // Temporary solution to compile issue: https://github.com/microsoft/TypeScript/issues/53087
 		"paths": {
