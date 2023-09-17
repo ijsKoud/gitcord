@@ -53,8 +53,8 @@
 	"packageManager": "yarn@3.6.3",
 	"dependencies": {
 		"@octokit/webhooks": "^12.0.3",
-		"@octokit/webhooks-types": "^7.2.0",
-		"@prisma/client": "^5.2.0",
+		"@octokit/webhooks-types": "^7.3.1",
+		"@prisma/client": "^5.3.1",
 		"@sapphire/discord-utilities": "^3.1.1",
 		"@snowcrystals/icicle": "^2.0.4",
 		"@snowcrystals/iglo": "^1.2.8",
