@@ -26,7 +26,7 @@
 		"@commitlint/cli": "^17.8.0",
 		"@commitlint/config-angular": "^17.8.0",
 		"@sapphire/eslint-config": "^5.0.2",
-		"@sapphire/ts-config": "^4.0.1",
+		"@sapphire/ts-config": "^5.0.0",
 		"@snowcrystals/prettier-config": "^1.0.0",
 		"@types/body-parser": "^1.19.3",
 		"@types/eventsource": "^1.1.12",
