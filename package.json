@@ -43,7 +43,7 @@
 		"lint-staged": "^15.2.0",
 		"nodemon": "^3.0.2",
 		"pinst": "^3.0.0",
-		"prettier": "^3.1.0",
+		"prettier": "^3.1.1",
 		"prisma": "^5.7.0",
 		"typescript": "5.3.3"
 	},
