@@ -1,11 +1,11 @@
 <div align="center">
-    <img src="https://cdn.discordapp.com/avatars/1018461517408120842/fb5707cc6be7d4c0dc365fd1f775ecf1.png?size=512" width="100px" />
-    <h1>gitcord</h1>
+    <img src="https://ijskoud.dev/assets/svg/logo.svg" width="100px" />
+    <h1>project-template</h1>
   
-  <p>🪝Custom GitHub embeds for Discord</p>
+  <p>A quick and easy to use template for TypeScript like projects ✏️</p>
   
   <p align="center">
-    <img alt="Version" src="https://img.shields.io/badge/version-1.1.1-blue.svg" />
+    <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
     <a href="/LICENSE" target="_blank">
       <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
@@ -20,16 +20,13 @@
 
 ## Information
 
-A Discord bot which makes your GitHub Discord embeds prettier ✨
+Just a template, like an uncolored drawing. That's all. ✏️
 
 ## Install
 
-Want to add the bot to your server? [Click here](https://discord.com/api/oauth2/authorize?client_id=1018461517408120842&permissions=536870928&scope=bot%20applications.commands)
-You can also install your own instance, check the .env.example for all the required environment variables.
-### Installation Via Docker
-```bash
-docker run --name=gitcord -v .env:/gitcord/.env -p 3000:3000 ghcr.io/ijskoud/gitcord
-```
+To use this template, you will need the following: `yarn` and `node >= 18.12.1`.
+
+
 
 ## Author
 

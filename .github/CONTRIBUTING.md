@@ -18,7 +18,7 @@ To work on the project you must do the following:
 
 **1**. Fork and clone the repository, make sure you are in the correct branch in this case the **main** branch.
 
-**2**. Install Yarn (you can use npm as well but this project uses yarn), after that run `yarn install`.
+**2**. Install pnpm (you can use npm as well but this project uses pnpm), after that run `pnpm install`.
 
 **3**. Do whatever you want to do (add things, change things, fixed things, etc)
 
