@@ -8,17 +8,15 @@
 	"main": "dist/index.js",
 	"homepage": "https://github.com/ijsKoud/gitcord",
 	"scripts": {
-		"build": "tsc --build",
-		"build:watch": "tsc --watch",
-		"start:dev": "nodemon ./dist",
-		"start": "node ./dist",
-		"lint": "eslint src",
+		"build": "turbo run build",
+		"start:dev": "turbo run build:watch dev --parallel",
+		"lint": "turbo run lint",
 		"postinstall": "is-ci || husky"
 	},
 	"devDependencies": {
 		"@sapphire/ts-config": "^5.0.1",
-		"@snowcrystals/prettier-config": "^1.0.0",
 		"@snowcrystals/eslint-config": "^1.0.0",
+		"@snowcrystals/prettier-config": "^1.0.0",
 		"@types/node": "^20.12.2",
 		"eslint": "^8.57.0",
 		"husky": "^9.0.11",
@@ -26,6 +24,8 @@
 		"lint-staged": "^15.2.2",
 		"nodemon": "^3.1.0",
 		"prettier": "^3.2.5",
+		"tsconfig-paths": "^4.2.0",
+		"turbo": "1.13.0",
 		"typescript": "5.4.3"
 	},
 	"engines": {

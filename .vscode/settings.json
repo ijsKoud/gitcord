@@ -4,5 +4,6 @@
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
-	}
+	},
+	"eslint.workingDirectories": [{ "pattern": "./packages/*/" }, { "pattern": "./apps/*/" }]
 }
