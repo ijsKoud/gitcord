@@ -30,15 +30,18 @@ export class GuildForumModel implements iModel<GuildForumSelectModel, GuildForum
 	/**
 	 * Get a guild form by its guild id and repository name
 	 * @param guildId The guild id
+	 * @param webhookId The webhook id
 	 * @param repository The repository name
 	 * @returns The guild form
 	 * @example
 	 * ```typescript
-	 * const form = await GuildForumTable.get("1234567890", "ijsKoud/gitcord");
+	 * const form = await GuildForumTable.get("1234567890", "1111111", "ijsKoud/gitcord");
 	 * ```
 	 */
-	public async getByRepositoryGuild(guildId: string, repository: string) {
-		const form = await this.query.select.where(and(eq(GuildForumTable.guildId, guildId), eq(GuildForumTable.repository, repository)));
+	public async getByRepositoryGuild(guildId: string, webhookId: string, repository: string) {
+		const form = await this.query.select.where(
+			and(eq(GuildForumTable.guildId, guildId), eq(GuildForumTable.repository, repository), eq(GuildForumTable.webhookId, webhookId))
+		);
 		return form[0] || null;
 	}
 

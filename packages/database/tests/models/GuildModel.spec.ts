@@ -3,7 +3,7 @@ import { test } from "@japa/runner";
 import { type GuildInsertModel, GuildModel } from "../../src/index.js";
 
 const MOCK_ID = "0123456789";
-const mockdata = { id: MOCK_ID, webhook: "test.local.host", createdAt: new Date(), type: "forum" } satisfies GuildInsertModel;
+const mockdata = { id: MOCK_ID, createdAt: new Date(), type: "forum" } satisfies GuildInsertModel;
 
 test.group("GuildModel", (group) => {
 	group.teardown(async () => {
@@ -36,9 +36,9 @@ test.group("GuildModel", (group) => {
 
 	test("it can update a guild by its id", async ({ expect }) => {
 		const guildModel = new GuildModel();
-		const updatedGuild = await guildModel.update(MOCK_ID, { webhook: "https://example.com", type: "text" });
+		const updatedGuild = await guildModel.update(MOCK_ID, { type: "text" });
 
-		expect(updatedGuild).toStrictEqual({ ...mockdata, webhook: "https://example.com", type: "text" });
+		expect(updatedGuild).toStrictEqual({ ...mockdata, type: "text" });
 	});
 
 	test("it can delete a guild", async ({ expect }) => {

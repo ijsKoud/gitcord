@@ -11,8 +11,8 @@ export class QueryClient {
 	/**
 	 * @param url The URL of the database to connect to
 	 */
-	public constructor(url: string = env.DATABASE_URL) {
-		const queryClient = postgres(url);
+	public constructor() {
+		const queryClient = postgres(env.DATABASE_URL);
 		this.db = drizzle(queryClient);
 	}
 }

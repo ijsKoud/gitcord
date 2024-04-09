@@ -1,6 +1,6 @@
 import { test } from "@japa/runner";
 
-import { type GuildForumInsertModel, GuildForumModel, GuildModel } from "../../src/index.js";
+import { type GuildForumInsertModel, GuildForumModel, GuildModel, GuildWebhookModel } from "../../src/index.js";
 
 const MOCK_ID = 1;
 const MOCK_GUILD_ID = "9876543210";
@@ -9,11 +9,15 @@ const mockdata = {
 	createdAt: new Date(),
 	post: "0123456789",
 	id: MOCK_ID,
+	webhookId: "1111111",
 	repository: "ijskoud/gitcord"
 } satisfies GuildForumInsertModel;
 
 test.group("GuildForumModel", (group) => {
 	group.teardown(async () => {
+		const guildWebhookModel = new GuildWebhookModel();
+		await guildWebhookModel.delete("1111111");
+
 		const guildForumModel = new GuildForumModel();
 		await guildForumModel.delete(MOCK_ID);
 
@@ -28,11 +32,14 @@ test.group("GuildForumModel", (group) => {
 
 	test("it can create a new guild form", async ({ expect }) => {
 		const guildForumModel = new GuildForumModel();
-		const guildModel = new GuildModel();
-
-		await guildModel.create([{ id: MOCK_GUILD_ID, webhook: "test.local.host", createdAt: new Date(), type: "forum" }]);
 		const createdGuild = await guildForumModel.create([mockdata]);
 		expect(createdGuild).toStrictEqual([mockdata]);
+	}).setup(async () => {
+		const guildWebhookModel = new GuildWebhookModel();
+		const guildModel = new GuildModel();
+
+		await guildModel.create([{ id: MOCK_GUILD_ID, createdAt: new Date(), type: "forum" }]);
+		await guildWebhookModel.create([{ id: "1111111", guildId: MOCK_GUILD_ID, createdAt: new Date(), webhook: "test.local.host" }]);
 	});
 
 	test("it can get a guild form by its id", async ({ expect }) => {
