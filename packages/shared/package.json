@@ -1,0 +1,20 @@
+{
+	"name": "@/shared",
+	"private": true,
+	"type": "module",
+	"exports": {
+		"./*.js": {
+			"default": "./dist/*.js",
+			"types": "./dist/*.d.ts"
+		},
+		"./errors/*.js": {
+			"import": "./dist/errors/*.js",
+			"types": "./dist/errors/*.d.ts"
+		}
+	},
+	"scripts": {
+		"build": "tsc --build",
+		"build:watch": "tsc --watch > /dev/null",
+		"lint": "eslint src"
+	}
+}
