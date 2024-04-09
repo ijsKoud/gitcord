@@ -22,7 +22,7 @@ export class GuildForumModel implements iModel<GuildForumSelectModel, GuildForum
 	 * const form = await GuildForumTable.get("1234567890");
 	 * ```
 	 */
-	public async get(id: string) {
+	public async get(id: number) {
 		const form = await this.queryClient.db.select().from(GuildForumTable).where(eq(GuildForumTable.id, id));
 		return form[0] || null;
 	}
@@ -64,7 +64,7 @@ export class GuildForumModel implements iModel<GuildForumSelectModel, GuildForum
 	 * const updatedGuildForum = await GuildForumTable.update("1234567890", { guild: "1234567890" });
 	 * ```
 	 */
-	public async update(id: string, data: Partial<GuildForumInsertModel>) {
+	public async update(id: number, data: Partial<GuildForumInsertModel>) {
 		await this.queryClient.db.update(GuildForumTable).set(data).where(eq(GuildForumTable.id, id));
 		return this.get(id);
 	}
@@ -90,7 +90,7 @@ export class GuildForumModel implements iModel<GuildForumSelectModel, GuildForum
 	 * await GuildForumTable.delete("1234567890");
 	 * ```
 	 */
-	public async delete(id: string) {
+	public async delete(id: number) {
 		await this.queryClient.db.delete(GuildForumTable).where(eq(GuildForumTable.id, id));
 	}
 

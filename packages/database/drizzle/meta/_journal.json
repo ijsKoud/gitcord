@@ -1,48 +1,48 @@
 {
-  "version": "5",
-  "dialect": "pg",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "5",
-      "when": 1712615219652,
-      "tag": "0000_fine_unus",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1712615351485,
-      "tag": "0001_chemical_mad_thinker",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1712650983235,
-      "tag": "0002_aromatic_lethal_legion",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1712651412322,
-      "tag": "0003_fearless_zemo",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1712654089360,
-      "tag": "0004_lame_yellow_claw",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1712660689440,
-      "tag": "0005_nostalgic_captain_cross",
-      "breakpoints": true
-    }
-  ]
+	"version": "5",
+	"dialect": "pg",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "5",
+			"when": 1712615219652,
+			"tag": "0000_fine_unus",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "5",
+			"when": 1712615351485,
+			"tag": "0001_chemical_mad_thinker",
+			"breakpoints": true
+		},
+		{
+			"idx": 2,
+			"version": "5",
+			"when": 1712650983235,
+			"tag": "0002_aromatic_lethal_legion",
+			"breakpoints": true
+		},
+		{
+			"idx": 3,
+			"version": "5",
+			"when": 1712651412322,
+			"tag": "0003_fearless_zemo",
+			"breakpoints": true
+		},
+		{
+			"idx": 4,
+			"version": "5",
+			"when": 1712654089360,
+			"tag": "0004_lame_yellow_claw",
+			"breakpoints": true
+		},
+		{
+			"idx": 5,
+			"version": "5",
+			"when": 1712660689440,
+			"tag": "0005_nostalgic_captain_cross",
+			"breakpoints": true
+		}
+	]
 }

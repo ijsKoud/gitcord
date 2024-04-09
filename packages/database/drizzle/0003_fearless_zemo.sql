@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS "guild_form" (
-	"id" varchar PRIMARY KEY NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
 	"guild_id" varchar NOT NULL,
 	"repository" varchar NOT NULL,
 	"forum_post" varchar NOT NULL,

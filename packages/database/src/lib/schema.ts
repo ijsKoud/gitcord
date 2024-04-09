@@ -1,4 +1,4 @@
-import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, serial, timestamp, varchar } from "drizzle-orm/pg-core";
 
 export type WebhookType = "forum" | "text";
 
@@ -11,7 +11,7 @@ export const GuildTable = pgTable("guild", {
 });
 
 export const GuildForumTable = pgTable("guild_forum", {
-	id: varchar("id").primaryKey(),
+	id: serial("id").primaryKey(),
 	guildId: varchar("guild_id")
 		.notNull()
 		.references(() => GuildTable.id, { onDelete: "cascade", onUpdate: "no action" }),

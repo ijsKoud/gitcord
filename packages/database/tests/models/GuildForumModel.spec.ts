@@ -2,13 +2,13 @@ import { test } from "@japa/runner";
 
 import { type GuildForumInsertModel, GuildForumModel, GuildModel } from "../../src/index.js";
 
-const MOCK_ID = "0123456789";
+const MOCK_ID = 1;
 const MOCK_GUILD_ID = "9876543210";
 const mockdata = {
-	id: MOCK_ID,
 	guildId: MOCK_GUILD_ID,
 	createdAt: new Date(),
-	post: MOCK_ID,
+	post: "0123456789",
+	id: MOCK_ID,
 	repository: "ijskoud/gitcord"
 } satisfies GuildForumInsertModel;
 
@@ -50,7 +50,7 @@ test.group("GuildForumModel", (group) => {
 	test("guild can have multiple guild forms", async ({ expect, cleanup }) => {
 		const guildForumModel = new GuildForumModel();
 
-		const MOCK_ID_2 = "0123456788";
+		const MOCK_ID_2 = 2;
 		const mockdata2 = {
 			...mockdata,
 			id: MOCK_ID_2
