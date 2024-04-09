@@ -5,7 +5,6 @@ export type WebhookType = "forum" | "text";
 /** The Postgres table structure */
 export const GuildTable = pgTable("guild", {
 	id: varchar("id").primaryKey(),
-	type: varchar("webhook_type").$type<WebhookType>().notNull(),
 	createdAt: timestamp("created_at").notNull().defaultNow()
 });
 
@@ -14,6 +13,7 @@ export const GuildWebhooksTable = pgTable("guild_webhooks", {
 	guildId: varchar("guild_id")
 		.notNull()
 		.references(() => GuildTable.id, { onDelete: "cascade", onUpdate: "no action" }),
+	type: varchar("webhook_type").$type<WebhookType>().notNull(),
 	webhook: varchar("webhook").notNull(),
 	createdAt: timestamp("created_at").notNull().defaultNow()
 });

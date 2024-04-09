@@ -38,8 +38,8 @@ test.group("GuildForumModel", (group) => {
 		const guildWebhookModel = new GuildWebhookModel();
 		const guildModel = new GuildModel();
 
-		await guildModel.create([{ id: MOCK_GUILD_ID, createdAt: new Date(), type: "forum" }]);
-		await guildWebhookModel.create([{ id: "1111111", guildId: MOCK_GUILD_ID, createdAt: new Date(), webhook: "test.local.host" }]);
+		await guildModel.create([{ id: MOCK_GUILD_ID, createdAt: new Date() }]);
+		await guildWebhookModel.create([{ id: "1111111", type: "forum", guildId: MOCK_GUILD_ID, createdAt: new Date(), webhook: "test.local.host" }]);
 	});
 
 	test("it can get a guild form by its id", async ({ expect }) => {
