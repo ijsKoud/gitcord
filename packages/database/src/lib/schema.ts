@@ -10,7 +10,7 @@ export const GuildTable = pgTable("guild", {
 	createdAt: timestamp("created_at").notNull().defaultNow()
 });
 
-export const GuildFormTable = pgTable("guild_form", {
+export const GuildForumTable = pgTable("guild_forum", {
 	id: varchar("id").primaryKey(),
 	guildId: varchar("guild_id")
 		.notNull()

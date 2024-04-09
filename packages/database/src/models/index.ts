@@ -1,2 +1,2 @@
-export * from "./GuildFormModel.js";
+export * from "./GuildForumModel.js";
 export * from "./GuildModel.js";

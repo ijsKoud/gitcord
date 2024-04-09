@@ -36,6 +36,13 @@
       "when": 1712654089360,
       "tag": "0004_lame_yellow_claw",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1712660689440,
+      "tag": "0005_nostalgic_captain_cross",
+      "breakpoints": true
     }
   ]
 }
