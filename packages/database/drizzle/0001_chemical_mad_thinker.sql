@@ -1,0 +1,1 @@
+ALTER TABLE "guild" ADD COLUMN "created_at" timestamp DEFAULT now() NOT NULL;

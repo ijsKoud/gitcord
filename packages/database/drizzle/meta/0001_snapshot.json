@@ -1,0 +1,44 @@
+{
+  "id": "752a208f-24c5-4021-ae35-7f57b06f939d",
+  "prevId": "c6cef27b-3f11-48c4-855d-4cb30d1d8ae5",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "guild": {
+      "name": "guild",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "webhook": {
+          "name": "webhook",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "9aa70381-a243-4ac1-9ea4-812c17258eaf",
+  "prevId": "c7a71c97-00d5-4a81-9376-a2a2bc29a4df",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "guild_form": {
+      "name": "guild_form",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "guild_id": {
+          "name": "guild_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "repository": {
+          "name": "repository",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "forum_post": {
+          "name": "forum_post",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "guild_form_guild_id_guild_id_fk": {
+          "name": "guild_form_guild_id_guild_id_fk",
+          "tableFrom": "guild_form",
+          "tableTo": "guild",
+          "columnsFrom": [
+            "guild_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "guild": {
+      "name": "guild",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "webhook": {
+          "name": "webhook",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "webhook_type": {
+          "name": "webhook_type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
