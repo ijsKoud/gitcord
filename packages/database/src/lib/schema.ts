@@ -8,7 +8,7 @@ export const GuildTable = pgTable("guild", {
 	createdAt: timestamp("created_at").notNull().defaultNow()
 });
 
-export const GuildWebhooksTable = pgTable("guild_webhooks", {
+export const GuildWebhooksTable = pgTable("guild_webhook", {
 	id: varchar("id").primaryKey(),
 	guildId: varchar("guild_id")
 		.notNull()
