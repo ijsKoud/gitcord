@@ -16,5 +16,10 @@
 		"build": "tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
 		"lint": "eslint src"
+	},
+	"dependencies": {
+		"@snowcrystals/icicle": "^2.0.4",
+		"reflect-metadata": "^0.2.2",
+		"tsyringe": "^4.8.0"
 	}
 }
