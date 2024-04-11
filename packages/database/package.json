@@ -16,6 +16,7 @@
 		"test": "tsx japa.config.js",
 		"db:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
 		"db:migrate": "dotenv -e ../../.env.local tsx src/lib/migrate.ts",
+		"db:test:migrate": "dotenv -e ../../.env.test.local tsx src/lib/migrate.ts",
 		"db:seed": "dotenv -e ../../.env.development.local tsx src/lib/seed.ts"
 	},
 	"dependencies": {

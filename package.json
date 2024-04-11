@@ -9,8 +9,9 @@
 	"homepage": "https://github.com/ijsKoud/gitcord",
 	"scripts": {
 		"build": "turbo run build",
-		"start:dev": "turbo run build:watch dev --parallel",
+		"start:dev": "dotenv -e .env.development.local turbo run build:watch dev --parallel",
 		"lint": "turbo run lint",
+		"test": "dotenv -e .env.test.local -- turbo run test",
 		"postinstall": "is-ci || husky"
 	},
 	"devDependencies": {
@@ -27,6 +28,10 @@
 		"tsconfig-paths": "^4.2.0",
 		"turbo": "1.13.0",
 		"typescript": "5.4.3"
+	},
+	"dependencies": {
+		"dotenv-cli": "^7.4.1",
+		"zod": "^3.22.4"
 	},
 	"engines": {
 		"node": ">= v18.16.0"
