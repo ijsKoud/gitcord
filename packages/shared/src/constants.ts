@@ -1,6 +1,5 @@
 export const GITHUB_AVATAR_URL = "https://cdn.ijskoud.dev/files/2zVGPBN3ZmId.webp";
 export const WEBHOOK_USER_APPENDIX = "GitCord (https://github.com/ijsKoud/gitcord)";
-export const WEBHOOK_SECRET = "no_secret";
 
 /** Type names of possible GitHub users */
 export enum UserTypes {
