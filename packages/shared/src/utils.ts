@@ -1,3 +1,6 @@
+import { createCipheriv, createDecipheriv, randomBytes } from "node:crypto";
+
+import { env } from "./env.js";
 /**
  * Transform a hex code to rgb
  * @param hex the hex code to transform
@@ -24,4 +27,39 @@ export function getRepository(payload: Record<string, any>) {
 	}
 
 	return null;
+}
+
+const IV_LENGTH = 16;
+
+/**
+ * Encrypt a text
+ * @param text The text to encrypt
+ * @returns The encrypted text
+ */
+export function encrypt(text: string) {
+	const iv = randomBytes(IV_LENGTH);
+	const cipher = createCipheriv("aes-256-cbc", Buffer.from(env.ENCRYPTION_KEY), iv);
+
+	let encrypted = cipher.update(text);
+	encrypted = Buffer.concat([encrypted, cipher.final()]);
+
+	return `${iv.toString("hex")}:${encrypted.toString("hex")}`;
+}
+
+/**
+ * Decrypt a text
+ * @param text The text to decrypt
+ * @returns The decrypted text
+ */
+export function decrypt(text: string) {
+	const textParts = text.split(":");
+	const iv = Buffer.from(textParts.shift()!, "hex");
+
+	const encryptedText = Buffer.from(textParts.join(":"), "hex");
+	const decipher = createDecipheriv("aes-256-cbc", Buffer.from(env.ENCRYPTION_KEY), iv);
+
+	let decrypted = decipher.update(encryptedText);
+	decrypted = Buffer.concat([decrypted, decipher.final()]);
+
+	return decrypted.toString();
 }

@@ -2,18 +2,21 @@ import { test } from "@japa/runner";
 import { eq } from "drizzle-orm";
 import { GuildForumModel, GuildModel, type GuildWebhookInsertModel, GuildWebhookModel } from "index.js";
 
+import { decrypt } from "@/shared/utils.js";
 import { GuildWebhooksTable } from "#lib/schema.js";
 
 const MOCK_FORUM_ID = 1;
 const MOCK_WEBHOOK_ID = "1111111";
 const MOCK_GUILD_ID = "9876543210";
+const SECRET = "TEST_SECRET";
 
 const MOCK_WEBHOOK_DATA = {
 	id: MOCK_WEBHOOK_ID,
 	guildId: MOCK_GUILD_ID,
 	createdAt: new Date(),
 	webhook: "test.local.host",
-	type: "forum"
+	type: "forum",
+	secret: SECRET
 } satisfies GuildWebhookInsertModel;
 
 test.group("GuildWebhookModel", (group) => {
@@ -42,6 +45,7 @@ test.group("GuildWebhookModel", (group) => {
 	test("it can create a new guild webhook", async ({ expect }) => {
 		const guildWebhookModel = new GuildWebhookModel();
 		const webhook = await guildWebhookModel.create([MOCK_WEBHOOK_DATA]);
+		webhook.forEach((webhook) => (webhook.secret = decrypt(webhook.secret)));
 
 		expect(webhook).toStrictEqual([MOCK_WEBHOOK_DATA]);
 	});
@@ -61,6 +65,7 @@ test.group("GuildWebhookModel", (group) => {
 	test("guild can have multiple guild webhooks", async ({ expect }) => {
 		const guildWebhookModel = new GuildWebhookModel();
 		const webhooks = await guildWebhookModel.query.select.where(eq(GuildWebhooksTable.guildId, MOCK_GUILD_ID));
+		webhooks.forEach((webhook) => (webhook.secret = decrypt(webhook.secret)));
 
 		expect(webhooks).toStrictEqual([MOCK_WEBHOOK_DATA, { ...MOCK_WEBHOOK_DATA, id: `${MOCK_WEBHOOK_ID}-1` }]);
 	}).setup(async () => {

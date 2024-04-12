@@ -30,10 +30,11 @@ export class DiscordChannelManager {
 
 		if (webhook.type === "forum") {
 			if (!repository) return Promise.reject(new HTTPError(HTTPStatus.BAD_REQUEST, "Missing repository in payload"));
-			return this.getForumWebhook(guild, webhook, repository);
+			const url = await this.getForumWebhook(guild, webhook, repository);
+			return { url, secret: webhook.secret };
 		}
 
-		return webhook.webhook;
+		return { url: webhook.webhook, secret: webhook.secret };
 	}
 
 	/**

@@ -1,4 +1,4 @@
-import { pgTable, serial, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
 
 export type WebhookType = "forum" | "text";
 
@@ -15,6 +15,7 @@ export const GuildWebhooksTable = pgTable("guild_webhook", {
 		.references(() => GuildTable.id, { onDelete: "cascade", onUpdate: "no action" }),
 	type: varchar("webhook_type").$type<WebhookType>().notNull(),
 	webhook: varchar("webhook").notNull(),
+	secret: text("secret").notNull(),
 	createdAt: timestamp("created_at").notNull().defaultNow()
 });
 

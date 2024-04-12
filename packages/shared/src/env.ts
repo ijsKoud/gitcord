@@ -6,7 +6,8 @@ const schema = z.object({
 	DEVELOPMENT_GUILD_ID: z.string().optional(),
 	DEVELOPMENT_WEBHOOK_ID: z.string().optional(),
 	DEVELOPMENT_WEBHOOK_URL: z.string().url().optional(),
-	WEBHOOK_SECRET: z.string(),
+	WEBHOOK_SECRET: z.string().optional(),
+	ENCRYPTION_KEY: z.string(),
 	PORT: z
 		.string()
 		.transform((v) => parseInt(v, 10))

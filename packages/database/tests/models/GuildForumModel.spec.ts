@@ -5,6 +5,7 @@ import { type GuildForumInsertModel, GuildForumModel, GuildModel, GuildWebhookMo
 const MOCK_ID = 1;
 const MOCK_GUILD_ID = "9876543210";
 const MOCK_WEBHOOK_ID = "1111111";
+const SECRET = "TEST_SECRET";
 const mockdata = {
 	guildId: MOCK_GUILD_ID,
 	createdAt: new Date(),
@@ -41,7 +42,7 @@ test.group("GuildForumModel", (group) => {
 
 		await guildModel.create([{ id: MOCK_GUILD_ID, createdAt: new Date() }]);
 		await guildWebhookModel.create([
-			{ id: MOCK_WEBHOOK_ID, type: "forum", guildId: MOCK_GUILD_ID, createdAt: new Date(), webhook: "test.local.host" }
+			{ id: MOCK_WEBHOOK_ID, type: "forum", guildId: MOCK_GUILD_ID, createdAt: new Date(), webhook: "test.local.host", secret: SECRET }
 		]);
 	});
 
@@ -113,7 +114,7 @@ test.group("GuildForumModel", (group) => {
 
 		const guildWebhookModel = new GuildWebhookModel();
 		await guildWebhookModel.create([
-			{ id: MOCK_WEBHOOK_ID, type: "forum", guildId: MOCK_GUILD_ID, createdAt: new Date(), webhook: "test.local.host" }
+			{ id: MOCK_WEBHOOK_ID, type: "forum", guildId: MOCK_GUILD_ID, createdAt: new Date(), webhook: "test.local.host", secret: SECRET }
 		]);
 	});
 });

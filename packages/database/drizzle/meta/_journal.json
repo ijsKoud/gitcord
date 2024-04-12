@@ -64,6 +64,13 @@
       "when": 1712700557388,
       "tag": "0008_living_magdalene",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1712958943537,
+      "tag": "0009_sour_silverclaw",
+      "breakpoints": true
     }
   ]
 }

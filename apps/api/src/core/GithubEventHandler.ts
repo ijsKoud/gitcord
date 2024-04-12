@@ -39,7 +39,7 @@ export class GithubEventHandler {
 			const repository = getRepository(req.body);
 			const webhook = await this.channelManager.getWebhook(guildId, webhookId, repository);
 
-			await this.receiveEvent({ payload: req.body, signature, deliveryId, name: event }, webhook);
+			await this.receiveEvent({ payload: req.body, signature, deliveryId, name: event }, webhook.url, webhook.secret);
 			await reply.status(HTTPStatus.NO_CONTENT).send();
 		} catch (error) {
 			if (error instanceof HTTPError) {
@@ -57,8 +57,10 @@ export class GithubEventHandler {
 	public async handleSmeeRequest(event: MessageEvent<any>) {
 		const guildId = env.DEVELOPMENT_GUILD_ID;
 		const webhookId = env.DEVELOPMENT_WEBHOOK_ID;
+		const secret = env.WEBHOOK_SECRET;
 		if (!guildId) throw new Error("Missing guild id in environment variables");
 		if (!webhookId) throw new Error("Missing webhook id in environment variables");
+		if (!secret) throw new Error("Missing webhook secret in environment variables");
 
 		const webhookEvent = JSON.parse(event.data);
 		const configuration = {
@@ -71,7 +73,7 @@ export class GithubEventHandler {
 		try {
 			const repository = getRepository(webhookEvent.body);
 			const webhook = await this.channelManager.getWebhook(guildId, webhookId, repository);
-			await this.receiveEvent(configuration, webhook);
+			await this.receiveEvent(configuration, webhook.url, secret);
 		} catch (error) {
 			if (error instanceof HTTPError) return; // HTTP errors are not caused by bugs in code
 			logger.error(`[GitHubEventHandler#handleSmeeRequest()]: `, error);
@@ -82,10 +84,11 @@ export class GithubEventHandler {
 	 * Receives an event from a Github webhook and dispatches it to the appropriate Discord webhook
 	 * @param event	The event received from the Github webhook
 	 * @param guild	The guild to dispatch the event to
+	 * @param secret The secret to verify the signature
 	 * @returns
 	 */
-	public async receiveEvent(event: GithubEventHandlerEvent, webhook: string) {
-		const isValid = this.verifySignature(JSON.stringify(event.payload), event.signature);
+	public async receiveEvent(event: GithubEventHandlerEvent, webhook: string, secret: string) {
+		const isValid = this.verifySignature(JSON.stringify(event.payload), event.signature, secret);
 		if (!isValid) return Promise.reject(new HTTPError(HTTPStatus.UNAUTHORIZED, "Invalid signature"));
 
 		const embed = getEmbed(event.payload, event.name);
@@ -100,12 +103,13 @@ export class GithubEventHandler {
 	 * Verifies the signature of an incoming webhook request
 	 * @param payload The payload received from the webhook request
 	 * @param signature The signature received from the webhook request
+	 * @param secret The secret to verify the signature
 	 * @returns A boolean indicating if the signature is valid
 	 */
-	public verifySignature(payload: string, signature: string) {
+	public verifySignature(payload: string, signature: string, secret: string) {
 		try {
 			// TODO: change env.WEBHOOK_SCERET to variable from database
-			const verificationSignature = `sha256=${createHmac("sha256", env.WEBHOOK_SECRET).update(payload).digest("hex")}`;
+			const verificationSignature = `sha256=${createHmac("sha256", secret).update(payload).digest("hex")}`;
 			const trusted = Buffer.from(verificationSignature, "ascii");
 			const untrusted = Buffer.from(signature, "ascii");
 
