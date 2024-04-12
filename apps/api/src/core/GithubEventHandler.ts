@@ -104,6 +104,7 @@ export class GithubEventHandler {
 	 */
 	public verifySignature(payload: string, signature: string) {
 		try {
+			// TODO: change env.WEBHOOK_SCERET to variable from database
 			const verificationSignature = `sha256=${createHmac("sha256", env.WEBHOOK_SECRET).update(payload).digest("hex")}`;
 			const trusted = Buffer.from(verificationSignature, "ascii");
 			const untrusted = Buffer.from(signature, "ascii");
@@ -126,7 +127,7 @@ export class GithubEventHandler {
 		url.pathname += "/github";
 
 		const path = url.toString().split("/").reverse().slice(0, 4).reverse().join("/");
-		await this.dispatch.post(path as `/${string}`, event.payload, {
+		await this.dispatch.post(`/${path}` as `/${string}`, event.payload, {
 			"x-github-delivery": event.deliveryId,
 			"x-github-event": event.name,
 			"x-hub-signature-256": event.signature
