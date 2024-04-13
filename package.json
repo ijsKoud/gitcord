@@ -52,7 +52,7 @@
 	},
 	"packageManager": "yarn@4.1.0",
 	"dependencies": {
-		"@octokit/webhooks": "^12.1.2",
+		"@octokit/webhooks": "^13.2.3",
 		"@octokit/webhooks-types": "^7.3.2",
 		"@prisma/client": "^5.10.0",
 		"@sapphire/discord-utilities": "^3.2.2",
