@@ -14,6 +14,9 @@ importers:
       drizzle-orm:
         specifier: ^0.30.7
         version: 0.30.7
+      pinst:
+        specifier: 3.0.0
+        version: 3.0.0
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -3603,6 +3606,12 @@ packages:
       safe-stable-stringify: 2.4.3
       sonic-boom: 3.8.0
       thread-stream: 2.4.1
+    dev: false
+
+  /pinst@3.0.0:
+    resolution: {integrity: sha512-cengSmBxtCyaJqtRSvJorIIZXMXg+lJ3sIljGmtBGUVonMnMsVJbnzl6jGN1HkOWwxNuJynCJ2hXxxqCQrFDdw==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
     dev: false
 
   /pkg-dir@7.0.0:
