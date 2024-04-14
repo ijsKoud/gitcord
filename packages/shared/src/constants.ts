@@ -32,3 +32,5 @@ export const EMBED_COLORS = {
 	UPDATE: "#3e3bf7",
 	BLACK: "#1f1f1f"
 } as const;
+
+export const MAX_WEBHOOKS_PER_GUILD = 3;

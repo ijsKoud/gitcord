@@ -4,11 +4,9 @@
 	"compilerOptions": {
 		"outDir": "./dist",
 		"baseUrl": "./src",
-		"skipLibCheck": true,
 		"paths": {
-			"#lib/*": ["lib/*"],
-			"#core/*": ["./core/*"],
-			"#types/*": ["types/*"]
+			"#lib/*": ["./lib/*"],
+			"#core/*": ["./core/*"]
 		}
 	}
 }

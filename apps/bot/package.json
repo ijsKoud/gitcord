@@ -1,0 +1,22 @@
+{
+	"name": "bot",
+	"private": true,
+	"type": "module",
+	"imports": {
+		"#lib/*": "./dist/lib/*",
+		"#core/*": "./dist/core/*"
+	},
+	"scripts": {
+		"build": "tsc --build",
+		"build:watch": "tsc --watch > /dev/null",
+		"dev": "nodemon --watch 'dist/**/*' --exec 'node dist/index.js'",
+		"lint": "eslint src"
+	},
+	"dependencies": {
+		"@/database": "workspace:^",
+		"@/shared": "workspace:^",
+		"@snowcrystals/iglo": "^1.2.8",
+		"discord.js": "14.14.1",
+		"colorette": "2.0.20"
+	}
+}

@@ -21,7 +21,6 @@
 	},
 	"dependencies": {
 		"@/shared": "workspace:^",
-		"drizzle-orm": "^0.30.7",
 		"postgres": "^3.4.4",
 		"reflect-metadata": "^0.2.2",
 		"tsyringe": "^4.8.0"

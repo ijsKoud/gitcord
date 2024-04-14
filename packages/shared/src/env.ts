@@ -8,6 +8,7 @@ const schema = z.object({
 	DEVELOPMENT_WEBHOOK_URL: z.string().url().optional(),
 	WEBHOOK_SECRET: z.string().optional(),
 	ENCRYPTION_KEY: z.string(),
+	DISCORD_BOT_TOKEN: z.string().optional(),
 	PORT: z
 		.string()
 		.transform((v) => parseInt(v, 10))
