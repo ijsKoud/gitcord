@@ -3,7 +3,7 @@ import { autoInjectable, inject } from "tsyringe";
 
 import { decrypt, encrypt } from "@/shared/utils.js";
 import { QueryClient } from "#core/QueryClient.js";
-import { GuildWebhooksTable, type WebhookType } from "#lib/schema.js";
+import { GuildWebhooksTable } from "#lib/schema.js";
 import type { iModel } from "#types/iModel.js";
 
 @autoInjectable()
