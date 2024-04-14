@@ -1,11 +1,11 @@
 <div align="center">
-    <img src="https://ijskoud.dev/assets/svg/logo.svg" width="100px" />
-    <h1>project-template</h1>
+    <img src="https://cdn.discordapp.com/avatars/1018461517408120842/fb5707cc6be7d4c0dc365fd1f775ecf1.png?size=512" width="100px" />
+    <h1>gitcord</h1>
   
-  <p>A quick and easy to use template for TypeScript like projects ✏️</p>
+  <p>🪝Custom GitHub embeds for Discord</p>
   
   <p align="center">
-    <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
+    <img alt="Version" src="https://img.shields.io/badge/version-1.1.1-blue.svg" />
     <a href="/LICENSE" target="_blank">
       <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
@@ -20,13 +20,14 @@
 
 ## Information
 
-Just a template, like an uncolored drawing. That's all. ✏️
+A Discord bot which makes your GitHub Discord embeds prettier ✨
 
 ## Install
 
-To use this template, you will need the following: `yarn` and `node >= 18.12.1`.
-
-
+Want to add the bot to your server? [Click here](https://discord.com/api/oauth2/authorize?client_id=1018461517408120842&permissions=536870928&scope=bot%20applications.commands)
+You can also install your own instance, check the .env.example for all the required environment variables.
+### Installation Via Docker
+Copy the `docker/docker-compose.yml` file to your server and run `docker-compose up -d`
 
 ## Author
 
