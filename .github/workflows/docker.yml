@@ -15,11 +15,11 @@ jobs:
         include:
           # GitHub bot
           - dockerfile: docker/bot.dockerfile
-            tags: ghcr.io/ijskoud/ijsblokje:bot
+            tags: ghcr.io/ijskoud/gitcord:bot
 
           # Discord bot
           - dockerfile: docker/api.dockerfile
-            tags: ghcr.io/ijskoud/ijsblokje:api
+            tags: ghcr.io/ijskoud/gitcord:api
 
     steps:
       - name: Check out the repo
