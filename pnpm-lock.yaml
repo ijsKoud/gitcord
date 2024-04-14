@@ -12,8 +12,8 @@ importers:
         specifier: ^7.4.1
         version: 7.4.1
       drizzle-orm:
-        specifier: ^0.30.7
-        version: 0.30.7
+        specifier: ^0.30.8
+        version: 0.30.8
       pinst:
         specifier: 3.0.0
         version: 3.0.0
@@ -76,8 +76,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0
       '@octokit/webhooks-types':
-        specifier: ^7.4.0
-        version: 7.4.0
+        specifier: ^7.5.0
+        version: 7.5.0
       '@sapphire/discord-utilities':
         specifier: ^3.2.3
         version: 3.2.3
@@ -880,8 +880,8 @@ packages:
       fastq: 1.17.1
     dev: true
 
-  /@octokit/webhooks-types@7.4.0:
-    resolution: {integrity: sha512-FE2V+QZ2UYlh+9wWd5BPLNXG+J/XUD/PPq0ovS+nCcGX4+3qVbi3jYOmCTW48hg9SBBLtInx9+o7fFt4H5iP0Q==}
+  /@octokit/webhooks-types@7.5.0:
+    resolution: {integrity: sha512-oFypF1oD0z1x4qi+Ff4ienJ/iZ3GBXoht+0B+x8gMIWiNhRJZADYO+2KOh03ZGOX8WF6iJELZWw+giHieBO7rg==}
     dev: false
 
   /@pkgr/core@0.1.1:
@@ -1866,8 +1866,8 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.30.7:
-    resolution: {integrity: sha512-9qefSZQlu2fO2qv24piHyWFWcxcOY15//0v4j8qomMqaxzipNoG+fUBrQ7Ftk7PY7APRbRdn/nkEXWxiI4a8mw==}
+  /drizzle-orm@0.30.8:
+    resolution: {integrity: sha512-9pBJA0IjnpPpzZ6s9jlS1CQAbKoBmbn2GJesPhXaVblAA/joOJ4AWWevYcqvLGj9SvThBAl7WscN8Zwgg5mnTw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
