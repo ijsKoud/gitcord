@@ -1,19 +1,11 @@
 {
-	"extends": ["@sapphire/ts-config", "@sapphire/ts-config/extra-strict", "@sapphire/ts-config/decorators", "@sapphire/ts-config/verbatim"],
+	"extends": ["@sapphire/ts-config", "@sapphire/ts-config/extra-strict", "@sapphire/ts-config/verbatim"],
 	"compilerOptions": {
 		"outDir": "./dist",
-		"baseUrl": "./src",
 		"noUnusedParameters": false,
 		"useUnknownInCatchVariables": false,
 		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		"skipLibCheck": true, // Temporary solution to compile issue: https://github.com/microsoft/TypeScript/issues/53087
-		"paths": {
-			"#discord/*": ["discord/*"],
-			"#github/*": ["github/*"],
-			"#database/*": ["database/*"],
-			"#shared/*": ["lib/*"]
-		}
+		"moduleResolution": "NodeNext"
 	},
 	"exclude": ["node_modules"],
 	"include": ["./src/**/*"]

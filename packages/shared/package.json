@@ -1,0 +1,25 @@
+{
+	"name": "@/shared",
+	"private": true,
+	"type": "module",
+	"exports": {
+		"./*.js": {
+			"default": "./dist/*.js",
+			"types": "./dist/*.d.ts"
+		},
+		"./errors/*.js": {
+			"import": "./dist/errors/*.js",
+			"types": "./dist/errors/*.d.ts"
+		}
+	},
+	"scripts": {
+		"build": "tsc --build",
+		"build:watch": "tsc --watch > /dev/null",
+		"lint": "eslint src"
+	},
+	"dependencies": {
+		"@snowcrystals/icicle": "^2.0.4",
+		"reflect-metadata": "^0.2.2",
+		"tsyringe": "^4.8.0"
+	}
+}

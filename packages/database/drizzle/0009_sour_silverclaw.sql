@@ -1,0 +1,1 @@
+ALTER TABLE "guild_webhook" ADD COLUMN "secret" text NOT NULL;

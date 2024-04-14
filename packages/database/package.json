@@ -1,0 +1,34 @@
+{
+	"name": "@/database",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"imports": {
+		"#lib/*": "./dist/lib/*",
+		"#core/*": "./dist/core/*",
+		"#types/*": "./dist/types/*"
+	},
+	"scripts": {
+		"build": "tsc --build",
+		"build:watch": "tsc --watch > /dev/null",
+		"lint": "eslint src",
+		"test": "tsx japa.config.js",
+		"db:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
+		"db:migrate": "dotenv -e ../../.env.local tsx src/lib/migrate.ts",
+		"db:test:migrate": "dotenv -e ../../.env.test.local tsx src/lib/migrate.ts",
+		"db:seed": "dotenv -e ../../.env.development.local tsx src/lib/seed.ts"
+	},
+	"dependencies": {
+		"@/shared": "workspace:^",
+		"postgres": "^3.4.4",
+		"reflect-metadata": "^0.2.2",
+		"tsyringe": "^4.8.0"
+	},
+	"devDependencies": {
+		"drizzle-kit": "^0.20.14",
+		"@japa/expect": "^3.0.2",
+		"@japa/runner": "^3.1.2",
+		"tsx": "4.7.2"
+	}
+}

@@ -1,4 +1,4 @@
-name: "cd(Docker): Publish stable image"
+name: "CD(Docker): Publish stable image"
 
 on:
   workflow_dispatch:
@@ -9,6 +9,18 @@ jobs:
   ghcr:
     name: Push Image to GitHub Packages
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          # GitHub bot
+          - dockerfile: docker/bot.dockerfile
+            tags: ghcr.io/ijskoud/ijsblokje:bot
+
+          # Discord bot
+          - dockerfile: docker/api.dockerfile
+            tags: ghcr.io/ijskoud/ijsblokje:api
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -31,6 +43,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: |
-            ghcr.io/ijskoud/gitcord:v1
-            ghcr.io/ijskoud/gitcord:latest
+          context: .
+          file: ${{ matrix.dockerfile }}
+          tags: ${{ matrix.tags }}
