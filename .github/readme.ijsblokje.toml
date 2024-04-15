@@ -7,13 +7,8 @@ license = "MIT"
 [project]
 icon = "https://cdn.discordapp.com/avatars/1018461517408120842/fb5707cc6be7d4c0dc365fd1f775ecf1.png?size=512"
 icon_width = "100px"
-version = "1.1.1"
+version = "2.0.0"
 
 [variables]
 information = "A Discord bot which makes your GitHub Discord embeds prettier ✨"
-installation = [
-  "Want to add the bot to your server? [Click here](https://discord.com/api/oauth2/authorize?client_id=1018461517408120842&permissions=536870928&scope=bot%20applications.commands)", 
-  "You can also install your own instance, check the .env.example for all the required environment variables.", 
-  "### Installation Via Docker", 
-  "Copy the `docker/docker-compose.yml` file to your server and run `docker-compose up -d`"
-]
+installation = [ "Want to add the bot to your server? [Click here](https://discord.com/api/oauth2/authorize?client_id=1018461517408120842&permissions=536870928&scope=bot%20applications.commands)", "You can also install your own instance, check the .env.example for all the required environment variables.", "### Installation Via Docker", "Copy the `docker/docker-compose.yml` file to your server and run `docker-compose up -d`" ]
