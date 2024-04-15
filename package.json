@@ -10,6 +10,7 @@
 	"scripts": {
 		"build": "turbo run build",
 		"start:dev": "dotenv -e .env.development.local turbo run build:watch dev --parallel",
+		"start": "dotenv -e .env.local turbo run start --parallel",
 		"lint": "turbo run lint",
 		"test": "dotenv -e .env.test.local -- turbo run test",
 		"postinstall": "is-ci || husky"

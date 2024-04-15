@@ -2,6 +2,7 @@ import EventSource from "eventsource";
 import fastify from "fastify";
 
 import { env } from "@/shared/env.js";
+import { HTTPStatus } from "@/shared/errors/HTTPError.js";
 import { logger } from "@/shared/logger.js";
 import { GithubEventHandler } from "#core/GithubEventHandler.js";
 
@@ -19,7 +20,8 @@ function setupDevelopment() {
 function setupProduction() {
 	const app = fastify();
 	app.post("/webhook/:guildId/:webhookId", eventHandler.handleFastifyRequest.bind(eventHandler));
-	app.listen({ port: env.PORT }, () => logger.info(`[WebhookHandler]: Listening on port ${env.PORT}`));
+	app.setNotFoundHandler((_, reply) => reply.redirect(HTTPStatus.PERMANENT_REDIRECT, "https://github.com/ijskoud/gitcord"));
+	app.listen({ port: env.PORT, host: "0.0.0.0" }, () => logger.info(`[WebhookHandler]: Listening on port ${env.PORT}`));
 }
 
 function setupTest() {}
