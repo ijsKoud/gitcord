@@ -4,8 +4,8 @@ services:
     image: ghcr.io/ijskoud/gitcord:api
     restart: always
 
-    volumes:
-      - ~/gitcord/.env:/gitcord/.env.local
+    env_file:
+      - ~/gitcord/.env
     ports:
       - 3001:3000
 
@@ -14,5 +14,5 @@ services:
     image: ghcr.io/ijskoud/gitcord:bot
     restart: always
 
-    volumes:
-      - ~/gitcord/.env:/gitcord/.env.local
+    env_file:
+      - ~/gitcord/.env
