@@ -23,16 +23,12 @@ export class IssueEmbeds extends BaseEmbed {
 	public override run(event: GithubEvents, name: WebhookEventName): boolean {
 		switch (name) {
 			case "issue_comment":
-				this.comment(event as IssueCommentEvent);
-				break;
+				return this.comment(event as IssueCommentEvent);
 			case "issues":
-				this.issues(event as IssuesEvent);
-				break;
+				return this.issues(event as IssuesEvent);
 			default:
 				return false;
 		}
-
-		return true;
 	}
 
 	/**
@@ -41,7 +37,7 @@ export class IssueEmbeds extends BaseEmbed {
 	 * @returns
 	 */
 	private comment(event: IssueCommentEvent) {
-		if (event.action !== "created") return;
+		if (event.action !== "created") return false;
 
 		const isPr = Boolean(event.issue.pull_request);
 		const issue = `${event.issue.title} (#${event.issue.number})`;
@@ -51,6 +47,8 @@ export class IssueEmbeds extends BaseEmbed {
 			.setURL(event.comment.html_url)
 			.setDescription(markdownParser(event.comment.body).slice(0, EmbedLimits.MaximumDescriptionLength))
 			.addFields([{ name: `On ${isPr ? "Pull Request" : "Issue"}`, value: `[${issue}](${event.issue.html_url})` }]);
+
+		return true;
 	}
 
 	/**
@@ -89,8 +87,10 @@ export class IssueEmbeds extends BaseEmbed {
 			case "edited":
 			case "transferred":
 			default:
-				break;
+				return false;
 		}
+
+		return true;
 	}
 
 	private opened(event: IssuesOpenedEvent | IssuesReopenedEvent) {
