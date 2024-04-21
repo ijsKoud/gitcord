@@ -9,17 +9,14 @@ export class RepositoryEmbeds extends BaseEmbed {
 	public override run(event: GithubEvents, name: WebhookEventName): boolean {
 		switch (name) {
 			case "release":
-				this.release(event as ReleaseEvent);
-				break;
+				return this.release(event as ReleaseEvent);
 			case "package":
-				this.package(event as PackageEvent);
-				break;
+				return this.package(event as PackageEvent);
 			case "member":
 				this.collaborator(event as MemberEvent);
 				break;
 			case "milestone":
-				this.milestone(event as MilestoneEvent);
-				break;
+				return this.milestone(event as MilestoneEvent);
 			default:
 				return false;
 		}
@@ -33,11 +30,13 @@ export class RepositoryEmbeds extends BaseEmbed {
 	 * @returns
 	 */
 	private release(event: ReleaseEvent) {
-		if (!["prereleased", "released"].includes(event.action)) return;
+		if (!["prereleased", "released"].includes(event.action)) return false;
 
 		this.embed
 			.setTitle(`${event.repository.full_name} — Release ${event.release.prerelease ? "Prereleased" : "Published"}: ${event.release.name}`)
 			.setDescription(markdownParser(event.release.body.slice(0, EmbedLimits.MaximumDescriptionLength)));
+
+		return true;
 	}
 
 	/**
@@ -46,7 +45,7 @@ export class RepositoryEmbeds extends BaseEmbed {
 	 * @returns
 	 */
 	private package(event: PackageEvent) {
-		if (event.action !== "published") return;
+		if (event.action !== "published") return false;
 		const registry = event.package.package_type === "CONTAINER" ? "ghcr.io" : event.package.package_type;
 
 		this.embed
@@ -56,6 +55,8 @@ export class RepositoryEmbeds extends BaseEmbed {
 					.join("\n")
 					.slice(0, EmbedLimits.MaximumDescriptionLength)
 			);
+
+		return true;
 	}
 
 	/**
@@ -76,6 +77,7 @@ export class RepositoryEmbeds extends BaseEmbed {
 
 		switch (event.action) {
 			case "created":
+				return false;
 			case "opened":
 				this.embed.setDescription(
 					[`Milestone: **${event.milestone.title}**`, event.milestone.description].join("\n").slice(0, EmbedLimits.MaximumDescriptionLength)
@@ -86,7 +88,9 @@ export class RepositoryEmbeds extends BaseEmbed {
 				this.embed.setDescription(`Milestone: **${event.milestone.title}**`);
 				break;
 			case "edited":
-				break;
+				return false;
 		}
+
+		return true;
 	}
 }

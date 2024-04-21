@@ -7,16 +7,12 @@ export class RefEmbeds extends BaseEmbed {
 	public override run(event: GithubEvents, name: WebhookEventName): boolean {
 		switch (name) {
 			case "create":
-				this.create(event as CreateEvent);
-				break;
+				return this.create(event as CreateEvent);
 			case "delete":
-				this.delete(event as DeleteEvent);
-				break;
+				return this.delete(event as DeleteEvent);
 			default:
 				return false;
 		}
-
-		return true;
 	}
 
 	/**
@@ -25,9 +21,13 @@ export class RefEmbeds extends BaseEmbed {
 	 * @returns
 	 */
 	private create(event: CreateEvent) {
+		if (event.ref.startsWith("branches/")) return false;
+
 		const type = _.capitalize(event.ref_type);
 		const updatedTitle = this.embed.data.title!.replace("{type}", type);
 		this.embed.setTitle(updatedTitle).setDescription(`${type}: **${event.ref}**`);
+
+		return true;
 	}
 
 	/**
@@ -36,8 +36,12 @@ export class RefEmbeds extends BaseEmbed {
 	 * @returns
 	 */
 	private delete(event: DeleteEvent) {
+		if (event.ref.startsWith("branches/")) return false;
+
 		const type = _.capitalize(event.ref_type);
 		const updatedTitle = this.embed.data.title!.replace("{type}", type);
 		this.embed.setTitle(updatedTitle).setDescription(`${type}: **${event.ref}**`);
+
+		return true;
 	}
 }
