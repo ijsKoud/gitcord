@@ -26,7 +26,7 @@ RUN apk update
 # Install dependencies
 COPY .gitignore .gitignore
 COPY --from=builder /gitcord/out/json/ .
-COPY --from=builder /gitcord/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY pnpm-lock.yaml ./pnpm-lock.yaml
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 

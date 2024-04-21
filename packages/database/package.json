@@ -30,6 +30,7 @@
 		"drizzle-kit": "^0.20.17",
 		"@japa/expect": "^3.0.2",
 		"@japa/runner": "^3.1.4",
-		"tsx": "4.7.2"
+		"tsx": "4.7.2",
+		"typescript": "5.4.5"
 	}
 }

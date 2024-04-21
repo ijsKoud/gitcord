@@ -31,7 +31,7 @@
 		"typescript": "5.4.5"
 	},
 	"dependencies": {
-		"dotenv-cli": "^7.4.1",
+		"dotenv-cli": "7.4.1",
 		"zod": "^3.22.5",
 		"drizzle-orm": "^0.30.8",
 		"pinst": "3.0.0"
