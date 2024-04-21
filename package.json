@@ -17,7 +17,7 @@
 	},
 	"devDependencies": {
 		"@sapphire/ts-config": "^5.0.1",
-		"@snowcrystals/eslint-config": "^1.0.1",
+		"@snowcrystals/eslint-config": "^1.0.2",
 		"@snowcrystals/prettier-config": "^1.0.0",
 		"@types/node": "^20.12.7",
 		"eslint": "^8.57.0",
