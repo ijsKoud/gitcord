@@ -92,7 +92,8 @@ export class GithubEventHandler {
 		if (!isValid) return Promise.reject(new HTTPError(HTTPStatus.UNAUTHORIZED, "Invalid signature"));
 
 		const embed = getEmbed(event.payload, event.name);
-		if (!embed) return this.forwardEvent(event, webhook);
+		if (embed === undefined) return this.forwardEvent(event, webhook);
+		else if (embed === null) return;
 
 		const body = { embeds: [embed], avatar_url: GITHUB_AVATAR_URL, username: "GitCord" };
 		webhook = webhook.split("/").reverse().slice(0, 3).reverse().join("/");
