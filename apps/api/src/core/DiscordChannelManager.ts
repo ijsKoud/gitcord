@@ -58,7 +58,7 @@ export class DiscordChannelManager {
 	 */
 	public async createForumChannel(guild: GuildSelectModel, webhook: GuildWebhookSelectModel, repository: string) {
 		const url = new URL(webhook.webhook);
-		const route = url.pathname as `/${string}`;
+		const route = url.pathname.replace("/api", "") as `/${string}`;
 		const res = await this.dispatch.post(`${route}?wait=true`, {
 			thread_name: repository,
 			content: `GitHub notifications for **${repository}**:\nhttps://github.com/${repository}`
