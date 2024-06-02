@@ -27,7 +27,7 @@
 		"tsyringe": "^4.8.0"
 	},
 	"devDependencies": {
-		"drizzle-kit": "^0.21.4",
+		"drizzle-kit": "^0.22.1",
 		"@japa/expect": "^3.0.2",
 		"@japa/runner": "^3.1.4",
 		"tsx": "4.11.0",
