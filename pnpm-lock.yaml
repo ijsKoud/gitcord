@@ -43,14 +43,14 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       lint-staged:
-        specifier: ^15.2.5
-        version: 15.2.5
+        specifier: ^15.2.7
+        version: 15.2.7
       nodemon:
         specifier: ^3.1.3
         version: 3.1.3
       prettier:
-        specifier: ^3.3.1
-        version: 3.3.1
+        specifier: ^3.3.2
+        version: 3.3.2
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -104,11 +104,11 @@ importers:
         specifier: ^4.17.5
         version: 4.17.5
       discord-api-types:
-        specifier: ^0.37.87
-        version: 0.37.87
+        specifier: ^0.37.89
+        version: 0.37.89
       tsx:
-        specifier: 4.15.0
-        version: 4.15.0
+        specifier: 4.15.5
+        version: 4.15.5
 
   apps/bot:
     dependencies:
@@ -150,11 +150,11 @@ importers:
         specifier: ^3.1.4
         version: 3.1.4
       drizzle-kit:
-        specifier: ^0.22.6
-        version: 0.22.6
+        specifier: ^0.22.7
+        version: 0.22.7
       tsx:
-        specifier: 4.15.0
-        version: 4.15.0
+        specifier: 4.15.5
+        version: 4.15.5
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -668,6 +668,7 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -675,6 +676,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
 
   '@japa/core@9.0.1':
     resolution: {integrity: sha512-snngJNbvYC92nn+dB69DT2iyosWZLXPRnOp8NJnVEeotkkKAWSmcDqBKw9qq2+MVdshwClvKFVXTxko4MtmlEQ==}
@@ -1187,8 +1189,8 @@ packages:
   discord-api-types@0.37.83:
     resolution: {integrity: sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==}
 
-  discord-api-types@0.37.87:
-    resolution: {integrity: sha512-9KfluFS1J22RuezzouGs2t5X/Yu3jNpmRJrG+dvu1R9R+wfxlhq1RXr/OjjVL6d4rr7Ez92yNWiImf/qX3GV1g==}
+  discord-api-types@0.37.89:
+    resolution: {integrity: sha512-+hiYDULKma/0B7Zd9/IYK0XnYlYhWSsPYKNahUk33QEy6yuHdGwlglIfbiTBn683cmJ44IFnFYZa8UX1Ka+kDg==}
 
   discord.js@14.15.3:
     resolution: {integrity: sha512-/UJDQO10VuU6wQPglA4kz2bw2ngeeSbogiIPx/TsnctfzV/tNf+q+i1HlgtX1OGpeOBpJH9erZQNO5oRM2uAtQ==}
@@ -1214,8 +1216,8 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
-  drizzle-kit@0.22.6:
-    resolution: {integrity: sha512-TE4mBMeVJvySjYxwKeUOMrzytFSKnpMyp6kBnm+aascu9P+hCMrGvnJhOAO94C3wmt144CoHZQWQCOoP/EFl8A==}
+  drizzle-kit@0.22.7:
+    resolution: {integrity: sha512-9THPCb2l1GPt7wxhws9LvTR0YG565ZlVgTuqGMwjs590Kch1pXu4GyjEArVijSF5m0OBj3qgdeKmuJXhKXgWFw==}
     hasBin: true
 
   drizzle-orm@0.31.2:
@@ -1888,8 +1890,8 @@ packages:
     resolution: {integrity: sha512-O18pf7nyvHTckunPWCV1XUNXU1piu01y2b7ATJ0ppkUkk8ocqVWBrYjJBCwHDjD/ZWcfyrA0P4gKhzWGi5EINQ==}
     engines: {node: '>=14'}
 
-  lint-staged@15.2.5:
-    resolution: {integrity: sha512-j+DfX7W9YUvdzEZl3Rk47FhDF6xwDBV5wwsCPw6BwWZVPYJemusQmvb9bRsW23Sqsaa+vRloAWogbK4BUuU2zA==}
+  lint-staged@15.2.7:
+    resolution: {integrity: sha512-+FdVbbCZ+yoh7E/RosSdqKJyUM2OEjTciH0TFNkawKgvFp1zbGlEC39RADg+xKBG1R4mhoH2j85myBQZ5wR+lw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -2124,8 +2126,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier@3.3.1:
-    resolution: {integrity: sha512-7CAwy5dRsxs8PHXT3twixW9/OEll8MLE0VRPCJyl7CkS6VHGPSlsVaWTiASPTyGyYRyApxlaWTzwUxVNrhcwDg==}
+  prettier@3.3.2:
+    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2447,8 +2449,8 @@ packages:
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  tsx@4.15.0:
-    resolution: {integrity: sha512-yPThHvkUdsyi3pUb+2a6JM0y0shxxLlIEfms2ZztL/rHqK+4dFYdVxh2X/0bcieo16Kvjq77VU/ML/nVICK/0g==}
+  tsx@4.15.5:
+    resolution: {integrity: sha512-iKi8jQ2VBmZ2kU/FkGkL2OSHBHsazsUzsdC/W/RwhKIEsIoZ1alCclZHP5jGfNHEaEWUJFM1GquzCf+4db3b0w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -3026,7 +3028,7 @@ snapshots:
 
   '@sapphire/discord-utilities@3.3.0':
     dependencies:
-      discord-api-types: 0.37.87
+      discord-api-types: 0.37.89
 
   '@sapphire/eslint-config@5.0.4':
     dependencies:
@@ -3034,8 +3036,8 @@ snapshots:
       '@typescript-eslint/parser': 7.7.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.1)
-      prettier: 3.3.1
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.2)
+      prettier: 3.3.2
       typescript: 5.4.5
     transitivePeerDependencies:
       - '@types/eslint'
@@ -3065,9 +3067,9 @@ snapshots:
       eslint: 8.57.0
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.1)
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.2)
       eslint-plugin-simple-import-sort: 12.1.0(eslint@8.57.0)
-      prettier: 3.3.1
+      prettier: 3.3.2
     transitivePeerDependencies:
       - '@types/eslint'
       - eslint-import-resolver-typescript
@@ -3521,7 +3523,7 @@ snapshots:
 
   discord-api-types@0.37.83: {}
 
-  discord-api-types@0.37.87: {}
+  discord-api-types@0.37.89: {}
 
   discord.js@14.15.3:
     dependencies:
@@ -3560,7 +3562,7 @@ snapshots:
 
   dotenv@16.4.5: {}
 
-  drizzle-kit@0.22.6:
+  drizzle-kit@0.22.7:
     dependencies:
       '@esbuild-kit/esm-loader': 2.6.5
       esbuild: 0.19.12
@@ -3792,10 +3794,10 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.1):
+  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.2):
     dependencies:
       eslint: 8.57.0
-      prettier: 3.3.1
+      prettier: 3.3.2
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     optionalDependencies:
@@ -4266,7 +4268,7 @@ snapshots:
       '@types/stack-utils': 2.0.3
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      micromatch: 4.0.5
+      micromatch: 4.0.7
       pretty-format: 29.7.0
       slash: 3.0.0
       stack-utils: 2.0.6
@@ -4323,7 +4325,7 @@ snapshots:
 
   lilconfig@3.1.1: {}
 
-  lint-staged@15.2.5:
+  lint-staged@15.2.7:
     dependencies:
       chalk: 5.3.0
       commander: 12.1.0
@@ -4564,7 +4566,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier@3.3.1: {}
+  prettier@3.3.2: {}
 
   pretty-format@29.7.0:
     dependencies:
@@ -4872,7 +4874,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsx@4.15.0:
+  tsx@4.15.5:
     dependencies:
       esbuild: 0.21.4
       get-tsconfig: 4.7.5
