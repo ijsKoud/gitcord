@@ -27,7 +27,7 @@
 		"nodemon": "^3.1.4",
 		"prettier": "^3.3.3",
 		"tsconfig-paths": "^4.2.0",
-		"turbo": "1.13.4",
+		"turbo": "2.0.12",
 		"typescript": "5.5.4"
 	},
 	"dependencies": {
