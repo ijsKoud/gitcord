@@ -79,8 +79,8 @@ importers:
         specifier: ^7.5.1
         version: 7.5.1
       '@sapphire/discord-utilities':
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.4.0
+        version: 3.4.0
       eventsource:
         specifier: ^2.0.2
         version: 2.0.2
@@ -756,8 +756,8 @@ packages:
     resolution: {integrity: sha512-7X7FFAA4DngXUl95+hYbUF19bp1LGiffjJtu7ygrZrbdCSsdDDBaSjB7Akw0ZbOu6k0xpXyljnJ6/RZUvLfRdg==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@sapphire/discord-utilities@3.3.0':
-    resolution: {integrity: sha512-xHAe22GSM4NjhNiyZ/5gwEF+uFDPHSrZABWypPGDUIK+CNDDPyPf56ooUb8cm02dVcU81wzscnRXK2cLY6RPcg==}
+  '@sapphire/discord-utilities@3.4.0':
+    resolution: {integrity: sha512-V8LhRQyFOjo4I4QQL+GTlS+heXnJsDCpwmbS3+V9wGrefkGNm8JcQDOThkEVcYwl87MVv/LyypRW4DcEKa/Mzw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
   '@sapphire/eslint-config@5.0.4':
@@ -3059,7 +3059,7 @@ snapshots:
 
   '@sapphire/async-queue@1.5.2': {}
 
-  '@sapphire/discord-utilities@3.3.0':
+  '@sapphire/discord-utilities@3.4.0':
     dependencies:
       discord-api-types: 0.37.98
 
