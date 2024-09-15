@@ -125,8 +125,8 @@ importers:
         specifier: 2.0.20
         version: 2.0.20
       discord.js:
-        specifier: 14.16.1
-        version: 14.16.1
+        specifier: 14.16.2
+        version: 14.16.2
 
   packages/database:
     dependencies:
@@ -200,10 +200,6 @@ packages:
   '@discordjs/collection@1.5.3':
     resolution: {integrity: sha512-SVb428OMd3WO1paV3rm6tSjM4wC+Kecaa1EUGX7vc6/fddvw/6lg90z4QtCqm21zvVe92vMMDt9+DkIvjXImQQ==}
     engines: {node: '>=16.11.0'}
-
-  '@discordjs/collection@2.1.0':
-    resolution: {integrity: sha512-mLcTACtXUuVgutoznkh6hS3UFqYirDYAg5Dc1m8xn6OvPjetnUlf/xjtqnnc47OwWdaoCQnHmHh9KofhD6uRqw==}
-    engines: {node: '>=18'}
 
   '@discordjs/collection@2.1.1':
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
@@ -756,10 +752,6 @@ packages:
     resolution: {integrity: sha512-xhhEcEvhQC8mP5oOr5hbE4CmUgmw/IPV1jhpGg2xSkzoFrt9i8YVqBQt9744EFesi5F7pBheWozg63RUBM/5JA==}
     engines: {node: '>=18.16.0'}
 
-  '@sapphire/async-queue@1.5.2':
-    resolution: {integrity: sha512-7X7FFAA4DngXUl95+hYbUF19bp1LGiffjJtu7ygrZrbdCSsdDDBaSjB7Akw0ZbOu6k0xpXyljnJ6/RZUvLfRdg==}
-    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
-
   '@sapphire/async-queue@1.5.3':
     resolution: {integrity: sha512-x7zadcfJGxFka1Q3f8gCts1F0xMwCKbZweM85xECGI0hBTeIZJGGCrHgLggihBoprlQ/hBmDR5LKfIPqnmHM3w==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
@@ -906,10 +898,6 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
-
-  '@vladfrangu/async_event_emitter@2.2.4':
-    resolution: {integrity: sha512-ButUPz9E9cXMLgvAW8aLAKKJJsPu1dY1/l/E8xzLFuysowXygs6GBcyunK9rnGC4zTsnIc2mQo71rGw9U+Ykug==}
-    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
   '@vladfrangu/async_event_emitter@2.4.6':
     resolution: {integrity: sha512-RaI5qZo6D2CVS6sTHFKg1v5Ohq/+Bo2LZ5gzUEwZ/WkHhwtGTCB/sVLw8ijOkAUxasZ+WshN/Rzj4ywsABJ5ZA==}
@@ -1225,8 +1213,8 @@ packages:
   discord-api-types@0.37.97:
     resolution: {integrity: sha512-No1BXPcVkyVD4ZVmbNgDKaBoqgeQ+FJpzZ8wqHkfmBnTZig1FcH3iPPersiK1TUIAzgClh2IvOuVUYfcWLQAOA==}
 
-  discord.js@14.16.1:
-    resolution: {integrity: sha512-/diX4shp3q1F3EySGQbQl10el+KIpffLSOJdtM35gGV7zw2ED7rKbASKJT7UIR9L/lTd0KtNenZ/h739TN7diA==}
+  discord.js@14.16.2:
+    resolution: {integrity: sha512-VGNi9WE2dZIxYM8/r/iatQQ+3LT8STW4hhczJOwm+DBeHq66vsKDCk8trChNCB01sMO9crslYuEMeZl2d7r3xw==}
     engines: {node: '>=18'}
 
   doctrine@2.1.0:
@@ -2683,8 +2671,6 @@ snapshots:
 
   '@discordjs/collection@1.5.3': {}
 
-  '@discordjs/collection@2.1.0': {}
-
   '@discordjs/collection@2.1.1': {}
 
   '@discordjs/formatters@0.5.0':
@@ -2707,12 +2693,12 @@ snapshots:
 
   '@discordjs/ws@1.1.1':
     dependencies:
-      '@discordjs/collection': 2.1.0
+      '@discordjs/collection': 2.1.1
       '@discordjs/rest': 2.4.0
       '@discordjs/util': 1.1.1
-      '@sapphire/async-queue': 1.5.2
+      '@sapphire/async-queue': 1.5.3
       '@types/ws': 8.5.10
-      '@vladfrangu/async_event_emitter': 2.2.4
+      '@vladfrangu/async_event_emitter': 2.4.6
       discord-api-types: 0.37.83
       tslib: 2.7.0
       ws: 8.17.0
@@ -3081,8 +3067,6 @@ snapshots:
 
   '@poppinss/macroable@1.0.2': {}
 
-  '@sapphire/async-queue@1.5.2': {}
-
   '@sapphire/async-queue@1.5.3': {}
 
   '@sapphire/discord-utilities@3.4.1':
@@ -3144,7 +3128,7 @@ snapshots:
   '@snowcrystals/iglo@1.2.8':
     dependencies:
       '@snowcrystals/icicle': 2.0.4
-      discord.js: 14.16.1
+      discord.js: 14.16.2
       lodash: 4.17.21
     transitivePeerDependencies:
       - bufferutil
@@ -3275,8 +3259,6 @@ snapshots:
       eslint-visitor-keys: 3.4.3
 
   '@ungap/structured-clone@1.2.0': {}
-
-  '@vladfrangu/async_event_emitter@2.2.4': {}
 
   '@vladfrangu/async_event_emitter@2.4.6': {}
 
@@ -3594,7 +3576,7 @@ snapshots:
 
   discord-api-types@0.37.97: {}
 
-  discord.js@14.16.1:
+  discord.js@14.16.2:
     dependencies:
       '@discordjs/builders': 1.9.0
       '@discordjs/collection': 1.5.3
@@ -4905,7 +4887,7 @@ snapshots:
   synckit@0.8.8:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.6.2
+      tslib: 2.7.0
 
   terminal-size@4.0.0: {}
 
