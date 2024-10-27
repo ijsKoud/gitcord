@@ -22,7 +22,7 @@
 	},
 	"dependencies": {
 		"@/shared": "workspace:^",
-		"postgres": "^3.4.4",
+		"postgres": "^3.4.5",
 		"reflect-metadata": "^0.2.2",
 		"tsyringe": "^4.8.0"
 	},
