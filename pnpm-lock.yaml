@@ -12,8 +12,8 @@ importers:
         specifier: 7.4.2
         version: 7.4.2
       drizzle-orm:
-        specifier: ^0.35.3
-        version: 0.35.3(@libsql/client-wasm@0.14.0)(postgres@3.4.5)
+        specifier: ^0.36.0
+        version: 0.36.0(@libsql/client-wasm@0.14.0)(postgres@3.4.5)
       pinst:
         specifier: 3.0.0
         version: 3.0.0
@@ -79,8 +79,8 @@ importers:
         specifier: ^7.6.1
         version: 7.6.1
       '@sapphire/discord-utilities':
-        specifier: ^3.4.1
-        version: 3.4.1
+        specifier: ^3.4.2
+        version: 3.4.2
       eventsource:
         specifier: ^2.0.2
         version: 2.0.2
@@ -766,8 +766,8 @@ packages:
     resolution: {integrity: sha512-x7zadcfJGxFka1Q3f8gCts1F0xMwCKbZweM85xECGI0hBTeIZJGGCrHgLggihBoprlQ/hBmDR5LKfIPqnmHM3w==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@sapphire/discord-utilities@3.4.1':
-    resolution: {integrity: sha512-DmBrle7uorAJUoh1mJo6aZ5pVjVnAOt9n5DXcZRN3ZWlu28cz0g3X6JYdwjAFdvBHlJIt9nobVPDMNDLUg6O4Q==}
+  '@sapphire/discord-utilities@3.4.2':
+    resolution: {integrity: sha512-UcvznqANszKaYYS56ld4xHIycE0xI4fzrLZ86Z5Dnssn5FTGNJEZpNn6tbB5QeGTTONJRsXbDgqmraWdSMa2gQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
   '@sapphire/eslint-config@5.0.4':
@@ -1254,12 +1254,12 @@ packages:
     resolution: {integrity: sha512-cMq8omEKywjIy5KcqUo6LvEFxkl8/zYHsgYjFVXjmPWWtuW4blcz+YW9+oIhoaALgs2ebRjzXwsJgN9i6P49Dw==}
     hasBin: true
 
-  drizzle-orm@0.35.3:
-    resolution: {integrity: sha512-Uv6N+b36x4BaZlxc96e+ag7RnMapBLGhc4SSi2F7RDwqYJipWjaU/P68RUp1FbW9r+mxoDp8nMz2Eece8PJxfA==}
+  drizzle-orm@0.36.0:
+    resolution: {integrity: sha512-6BETYPdKSR7cDHC0ZfqZk2VrKJ8n/Rfd3ajFPsAbc69gi87nwZ6oBA2wUGMELHA0tQE4kUKN0Ds00LUZQ6Z69A==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
-      '@electric-sql/pglite': '>=0.1.1'
+      '@electric-sql/pglite': '>=0.2.0'
       '@libsql/client': '>=0.10.0'
       '@libsql/client-wasm': '>=0.10.0'
       '@neondatabase/serverless': '>=0.1'
@@ -1294,6 +1294,8 @@ packages:
       '@electric-sql/pglite':
         optional: true
       '@libsql/client':
+        optional: true
+      '@libsql/client-wasm':
         optional: true
       '@neondatabase/serverless':
         optional: true
@@ -3052,10 +3054,12 @@ snapshots:
     dependencies:
       '@libsql/core': 0.14.0
       js-base64: 3.7.7
+    optional: true
 
   '@libsql/core@0.14.0':
     dependencies:
       js-base64: 3.7.7
+    optional: true
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -3096,9 +3100,9 @@ snapshots:
 
   '@sapphire/async-queue@1.5.3': {}
 
-  '@sapphire/discord-utilities@3.4.1':
+  '@sapphire/discord-utilities@3.4.2':
     dependencies:
-      discord-api-types: 0.37.103
+      discord-api-types: 0.37.100
 
   '@sapphire/eslint-config@5.0.4':
     dependencies:
@@ -3651,10 +3655,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.35.3(@libsql/client-wasm@0.14.0)(postgres@3.4.5):
-    dependencies:
-      '@libsql/client-wasm': 0.14.0
+  drizzle-orm@0.36.0(@libsql/client-wasm@0.14.0)(postgres@3.4.5):
     optionalDependencies:
+      '@libsql/client-wasm': 0.14.0
       postgres: 3.4.5
 
   emittery@1.0.3: {}
@@ -4368,7 +4371,8 @@ snapshots:
       graceful-fs: 4.2.11
       picomatch: 2.3.1
 
-  js-base64@3.7.7: {}
+  js-base64@3.7.7:
+    optional: true
 
   js-tokens@4.0.0: {}
 
