@@ -12,8 +12,8 @@ importers:
         specifier: 7.4.2
         version: 7.4.2
       drizzle-orm:
-        specifier: ^0.36.0
-        version: 0.36.0(@libsql/client-wasm@0.14.0)(postgres@3.4.5)
+        specifier: ^0.36.1
+        version: 0.36.1(@libsql/client-wasm@0.14.0)(postgres@3.4.5)
       pinst:
         specifier: 3.0.0
         version: 3.0.0
@@ -79,8 +79,8 @@ importers:
         specifier: ^7.6.1
         version: 7.6.1
       '@sapphire/discord-utilities':
-        specifier: ^3.4.2
-        version: 3.4.2
+        specifier: ^3.4.3
+        version: 3.4.3
       eventsource:
         specifier: ^2.0.2
         version: 2.0.2
@@ -766,8 +766,8 @@ packages:
     resolution: {integrity: sha512-x7zadcfJGxFka1Q3f8gCts1F0xMwCKbZweM85xECGI0hBTeIZJGGCrHgLggihBoprlQ/hBmDR5LKfIPqnmHM3w==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@sapphire/discord-utilities@3.4.2':
-    resolution: {integrity: sha512-UcvznqANszKaYYS56ld4xHIycE0xI4fzrLZ86Z5Dnssn5FTGNJEZpNn6tbB5QeGTTONJRsXbDgqmraWdSMa2gQ==}
+  '@sapphire/discord-utilities@3.4.3':
+    resolution: {integrity: sha512-QVh0KN+UYKnOZBhjMCe7IS2Wr0Ug3IT4evyygIDXZz2fRpfup7peHW2w1QplwLfEbpBTW9Uzr/9aONOYIobpxg==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
   '@sapphire/eslint-config@5.0.4':
@@ -1254,8 +1254,8 @@ packages:
     resolution: {integrity: sha512-4BNA0T2blN+jW5wSwhtc+FIlCMuxYSMWCnYYdOBi5rttwq8aVXRUid0d0NCzcBKtZQSPZGAUxy+TXr7Q1OgEug==}
     hasBin: true
 
-  drizzle-orm@0.36.0:
-    resolution: {integrity: sha512-6BETYPdKSR7cDHC0ZfqZk2VrKJ8n/Rfd3ajFPsAbc69gi87nwZ6oBA2wUGMELHA0tQE4kUKN0Ds00LUZQ6Z69A==}
+  drizzle-orm@0.36.1:
+    resolution: {integrity: sha512-F4hbimnMEhyWzDowQB4xEuVJJWXLHZYD7FYwvo8RImY+N7pStGqsbfmT95jDbec1s4qKmQbiuxEDZY90LRrfIw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -3100,7 +3100,7 @@ snapshots:
 
   '@sapphire/async-queue@1.5.3': {}
 
-  '@sapphire/discord-utilities@3.4.2':
+  '@sapphire/discord-utilities@3.4.3':
     dependencies:
       discord-api-types: 0.37.100
 
@@ -3655,7 +3655,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.36.0(@libsql/client-wasm@0.14.0)(postgres@3.4.5):
+  drizzle-orm@0.36.1(@libsql/client-wasm@0.14.0)(postgres@3.4.5):
     optionalDependencies:
       '@libsql/client-wasm': 0.14.0
       postgres: 3.4.5
