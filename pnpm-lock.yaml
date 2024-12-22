@@ -104,8 +104,8 @@ importers:
         specifier: ^4.17.13
         version: 4.17.13
       discord-api-types:
-        specifier: ^0.37.111
-        version: 0.37.111
+        specifier: ^0.37.112
+        version: 0.37.112
       tsx:
         specifier: 4.19.2
         version: 4.19.2
@@ -1221,8 +1221,8 @@ packages:
   discord-api-types@0.37.100:
     resolution: {integrity: sha512-a8zvUI0GYYwDtScfRd/TtaNBDTXwP5DiDVX7K5OmE+DRT57gBqKnwtOC5Ol8z0mRW8KQfETIgiB8U0YZ9NXiCA==}
 
-  discord-api-types@0.37.111:
-    resolution: {integrity: sha512-22O4/mjfcLaQ8bbJorGpzFThnjhd8/exQxFscP3fnyJPo9Fk9O5GkWDIremYbvuw4YiwMfssWFniIb/iAwRqTg==}
+  discord-api-types@0.37.112:
+    resolution: {integrity: sha512-DDEt3696k7o9+Ot2a5phqsEKnwhSGfIDzXJR9V5OMba9fbvJOEhPapLXy645RkrGCEKZeoFd3qXFhrvVQSUbxQ==}
 
   discord-api-types@0.37.83:
     resolution: {integrity: sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==}
@@ -3606,7 +3606,7 @@ snapshots:
 
   discord-api-types@0.37.100: {}
 
-  discord-api-types@0.37.111: {}
+  discord-api-types@0.37.112: {}
 
   discord-api-types@0.37.83: {}
 
