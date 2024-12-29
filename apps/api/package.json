@@ -30,7 +30,7 @@
 		"@japa/runner": "^3.1.4",
 		"@types/eventsource": "^1.1.15",
 		"@types/lodash": "^4.17.13",
-		"discord-api-types": "^0.37.112",
+		"discord-api-types": "^0.37.114",
 		"tsx": "4.19.2"
 	}
 }
