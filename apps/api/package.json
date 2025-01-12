@@ -22,7 +22,7 @@
 		"@octokit/webhooks-types": "^7.6.1",
 		"@sapphire/discord-utilities": "^3.4.4",
 		"eventsource": "^2.0.2",
-		"fastify": "^4.29.0",
+		"fastify": "^5.2.1",
 		"lodash": "^4.17.21"
 	},
 	"devDependencies": {
