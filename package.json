@@ -19,7 +19,7 @@
 		"@sapphire/ts-config": "^5.0.1",
 		"@snowcrystals/eslint-config": "^1.0.2",
 		"@snowcrystals/prettier-config": "^1.0.0",
-		"@types/node": "^20.17.11",
+		"@types/node": "^20.17.12",
 		"eslint": "^8.57.1",
 		"husky": "^9.1.7",
 		"is-ci": "^3.0.1",
@@ -28,7 +28,7 @@
 		"prettier": "^3.4.2",
 		"tsconfig-paths": "^4.2.0",
 		"turbo": "1.13.4",
-		"typescript": "5.7.2"
+		"typescript": "5.7.3"
 	},
 	"dependencies": {
 		"dotenv-cli": "7.4.4",
